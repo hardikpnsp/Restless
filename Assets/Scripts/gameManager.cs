@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour {
 
-   
-
     [SerializeField]
     public GameObject[] groundPrefabs;
     public GameObject cameraX;
@@ -49,18 +47,21 @@ public class gameManager : MonoBehaviour {
             //Debug.Log("r: " + r);
             //Debug.Log("z: " + z);
             buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
+            
         }
         else {
             z = (int)(z / 100);
             z = z + 2;
-            int r = Random.Range(0, groundPrefabs.Length);
+            int r = Random.Range(1, groundPrefabs.Length);
             //Debug.Log("r: " + r);
             //Debug.Log("z: " + z);
             buffer0 = current;
             current = buffer2;
             buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
             Destroy(buffer0);
+        
         }
+        //current.GetComponent<GroundTrigger>().enabled = false;
         groundNumber++;
         Debug.Log("Ground: " + groundNumber);
     }
