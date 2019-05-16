@@ -20,6 +20,7 @@ public class playerCollision : MonoBehaviour {
     void Start()
     {
         state = (int)States.GOING_LEFT;
+        FindObjectOfType<AudioManager>().Play("Breath");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,15 +30,19 @@ public class playerCollision : MonoBehaviour {
             if (collision.collider.tag == "LeftSide")
             {
                 state = (int)States.GOING_RIGHT;
+                FindObjectOfType<AudioManager>().Play("heartbeat");
             }
             else if (collision.collider.tag == "RightSide")
             {
                 state = (int)States.GOING_LEFT;
+                FindObjectOfType<AudioManager>().Play("heartbeat");
             }
             if (collision.collider.tag == "obstacle")
             {
                 state = (int)States.DEAD;
                 movement.enabled = false;
+                FindObjectOfType<AudioManager>().Play("Fall");
+                FindObjectOfType<AudioManager>().Stop("Breath");
                 FindObjectOfType<gameManager>().EndGame();
             }
         }

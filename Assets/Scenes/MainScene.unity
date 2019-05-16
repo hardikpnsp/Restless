@@ -377,6 +377,11 @@ Prefab:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 54255098096051160, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 225f894c5fda7b94abc9e715511b5d80, type: 2}
   m_IsPrefabAsset: 0
@@ -869,6 +874,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c40b6020d39ec46af0554648249696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1665522697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665522699}
+  - component: {fileID: 1665522698}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1665522698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665522697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305b2a48c44851a4dbde4353c10a89c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: heartbeat
+    clip: {fileID: 8300000, guid: 1ef4b417a1ddc8545a2b32b4695568aa, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ThemeBreathing
+    clip: {fileID: 8300000, guid: 50d1b61249992384fb8feed12d8073a6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Breath
+    clip: {fileID: 8300000, guid: 69496e35be2af6543b0f50a34abe449a, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fall
+    clip: {fileID: 8300000, guid: 5c265bd4a4e0d3d4a84e979e331f5f02, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OutdoorAmbiance
+    clip: {fileID: 8300000, guid: 20ddb4162820317448e1775e077dfb96, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &1665522699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665522697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689060585
 GameObject:
   m_ObjectHideFlags: 0
