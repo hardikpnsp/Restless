@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (Input.GetKey("w")) {
+        if (Input.touchCount > 0 || Input.GetKey("w")) {
             rb.AddForce(0, 0, forwardForce * Time.deltaTime);
         }
         if(rb.position.y < -10)
