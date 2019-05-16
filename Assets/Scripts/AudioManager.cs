@@ -30,8 +30,6 @@ public class AudioManager : MonoBehaviour {
         }
         Sound music = Array.Find(sounds, sound => sound.name == "ThemeBreathing");
         music.source.Play();
-        Sound breath = Array.Find(sounds, sound => sound.name == "Breath");
-        breath.source.Play();
         Sound outdoor = Array.Find(sounds, sound => sound.name == "OutdoorAmbiance");
         outdoor.source.Play();
     }

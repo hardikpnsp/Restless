@@ -6,7 +6,11 @@ public class playerCollision : MonoBehaviour {
 
     public float sideForce;
 
-    public playerMovement movement; 
+    public playerMovement movement;
+
+    public ParticleSystem sideParticles;
+
+    public ParticleSystem obsParticles;
 
     enum States
     {
@@ -29,13 +33,19 @@ public class playerCollision : MonoBehaviour {
         if (state != (int)States.DEAD) { 
             if (collision.collider.tag == "LeftSide")
             {
-                state = (int)States.GOING_RIGHT;
+                
                 FindObjectOfType<AudioManager>().Play("heartbeat");
+                sideParticles.transform.position = rb.transform.position;
+                sideParticles.Play();
+                state = (int)States.GOING_RIGHT;
             }
             else if (collision.collider.tag == "RightSide")
             {
-                state = (int)States.GOING_LEFT;
                 FindObjectOfType<AudioManager>().Play("heartbeat");
+                sideParticles.transform.position = rb.transform.position;
+                sideParticles.Play();
+                state = (int)States.GOING_LEFT;
+                
             }
             if (collision.collider.tag == "obstacle")
             {
@@ -43,6 +53,8 @@ public class playerCollision : MonoBehaviour {
                 movement.enabled = false;
                 FindObjectOfType<AudioManager>().Play("Fall");
                 FindObjectOfType<AudioManager>().Stop("Breath");
+                obsParticles.transform.position = rb.transform.position;
+                obsParticles.Play();
                 FindObjectOfType<gameManager>().EndGame();
             }
         }
