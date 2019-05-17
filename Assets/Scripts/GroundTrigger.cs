@@ -16,6 +16,7 @@ public class GroundTrigger : MonoBehaviour {
         {
             triggered = true;
             FindObjectOfType<gameManager>().RenderNewGround(other.transform.position.z);
+
         }
     }
 }

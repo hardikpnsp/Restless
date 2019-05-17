@@ -29,7 +29,7 @@ public class playerCollision : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
+        //Debug.Log(collision.collider.tag);
         if (state != (int)States.DEAD) { 
             if (collision.collider.tag == "LeftSide")
             {

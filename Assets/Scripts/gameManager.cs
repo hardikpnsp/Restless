@@ -19,6 +19,8 @@ public class gameManager : MonoBehaviour {
     private GameObject buffer0;
     private GameObject buffer2;
 
+    [SerializeField]
+    public ParticleSystem lemonParticles;
     public playerMovement movement;
 
 
@@ -28,8 +30,12 @@ public class gameManager : MonoBehaviour {
     public GameObject deathUI;
     public GameObject startUI;
 
+    private int lemons;
     private void Start()
     {
+
+        lemons = 0;
+
         quoteSpawn = new int[groundPrefabs.Length,extraQuotes];
         int i = 0;
         int j = 0;
@@ -125,6 +131,17 @@ public class gameManager : MonoBehaviour {
  
         SceneManager.LoadScene("MainScene");
 
+    }
+
+    public void gotLemon(Transform t, bool byPlayer)
+    {
+        lemonParticles.transform.position = t.position;
+        lemonParticles.Play();
+        if (byPlayer)
+        {
+            lemons++;
+
+        }
     }
 
 }

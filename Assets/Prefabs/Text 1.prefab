@@ -30,7 +30,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &23550523211138664
 MeshRenderer:
@@ -103,6 +103,7 @@ MonoBehaviour:
   - Trying to grow up.You start climbing stairs
   - One step at a time, you can clime mountains.
   - Life doesn't let you go one step at a time, does it?
+  quotesSpawn: 
   text: {fileID: 114715214803401482}
 --- !u!114 &114715214803401482
 MonoBehaviour:
