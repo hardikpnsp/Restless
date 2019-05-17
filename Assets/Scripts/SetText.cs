@@ -7,15 +7,29 @@ public class SetText : MonoBehaviour {
 
 
     public string[] quotes;
-    public TextMeshPro text; 
-	// Use this for initialization
-	void Start () {
-        int r = Random.Range(0, quotes.Length);
-        text.SetText(quotes[r]);
+    public int[] quotesSpawn;
+    public TextMeshPro text;
+    // Use this for initialization
+
+    void Start () {
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void setText(int r)
+    {
+        if(r >= quotes.Length)
+        {
+            text.SetText("");
+        }
+        else
+        {
+            text.SetText(quotes[r]);
+        }
+        
+    }
 }

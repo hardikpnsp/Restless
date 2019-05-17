@@ -33,7 +33,7 @@ public class playerMovement : MonoBehaviour {
         }
         if(rb.position.y < -10)
         {
-            Debug.Log("unexpected !");
+            Debug.LogWarning("unexpected !");
             FindObjectOfType<gameManager>().EndGame();
         }
 
