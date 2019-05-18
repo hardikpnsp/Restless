@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LemonTrigger : MonoBehaviour {
 
-    public ParticleSystem lemonParticles;
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

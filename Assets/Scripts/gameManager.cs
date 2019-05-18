@@ -23,6 +23,7 @@ public class gameManager : MonoBehaviour {
     public ParticleSystem lemonParticles;
     public playerMovement movement;
 
+    public LemonScore lemons;
 
     bool gameHasEnded = false;
     public float delay;
@@ -30,11 +31,10 @@ public class gameManager : MonoBehaviour {
     public GameObject deathUI;
     public GameObject startUI;
 
-    private int lemons;
+    public LemonScore endGameLemonScore;
+
     private void Start()
     {
-
-        lemons = 0;
 
         quoteSpawn = new int[groundPrefabs.Length,extraQuotes];
         int i = 0;
@@ -61,6 +61,7 @@ public class gameManager : MonoBehaviour {
     {
         if (gameHasEnded == false)
         {
+            endGameLemonScore.SetLemons(lemons.GetLemons()); 
             gameHasEnded = true;
             Debug.Log("Game Over");
             cameraX.GetComponent<followPlayer>().enabled = false;
@@ -139,8 +140,7 @@ public class gameManager : MonoBehaviour {
         lemonParticles.Play();
         if (byPlayer)
         {
-            lemons++;
-
+            lemons.IncreaseLemons();
         }
     }
 
