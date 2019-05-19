@@ -8,6 +8,7 @@ TagManager:
   - LeftSide
   - RightSide
   - lemon
+  - ego
   layers:
   - Default
   - TransparentFX

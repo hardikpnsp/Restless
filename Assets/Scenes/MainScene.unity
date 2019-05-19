@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300535, g: 0.4921952, b: 0.57192373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -52,7 +52,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
@@ -182,6 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 6960793}
   player: {fileID: 498132954}
+  playerScore: 0
+  bonusScore: 0
+  totalScore: 0
 --- !u!114 &6960793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,12 +279,15 @@ MonoBehaviour:
   cameraX: {fileID: 534669902}
   groundNumber: 0
   lemonParticles: {fileID: 307191147}
+  egoParticles: {fileID: 0}
   movement: {fileID: 1670315749}
+  ps: {fileID: 1670315755}
   lemons: {fileID: 6960795}
   delay: 2
   deathUI: {fileID: 1208240290}
   startUI: {fileID: 1891553358}
   endGameLemonScore: {fileID: 1737175293}
+  s: {fileID: 883228366}
 --- !u!4 &107168521
 Transform:
   m_ObjectHideFlags: 0
@@ -320,21 +326,21 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9811321, g: 0.9773846, b: 0.7913849, a: 1}
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 1
+  m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -354,13 +360,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.8528686, y: 0.086824074, z: -0.15038373, w: 0.49240384}
   m_LocalPosition: {x: 0, y: 3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 120, y: 20, z: 0}
 --- !u!1 &307191145
 GameObject:
   m_ObjectHideFlags: 0
@@ -6151,7 +6157,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 50
+        scalar: 30
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -10043,7 +10049,6 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
-  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -10125,18 +10130,6 @@ MonoBehaviour:
   player: {fileID: 498132954}
   offset: {x: 0, y: 9, z: -6}
   cameraDamp: 0.1
---- !u!114 &534669907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 7a6dca560847fd24787f04cca20cf57d, type: 2}
 --- !u!1001 &786062324
 Prefab:
   m_ObjectHideFlags: 0
@@ -10205,6 +10198,26 @@ Prefab:
       propertyPath: obsParticles
       value: 
       objectReference: {fileID: 468543559}
+    - target: {fileID: 114424813014869162, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 498132954}
+    - target: {fileID: 114424813014869162, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 1670315755}
+    - target: {fileID: 114424813014869162, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: s
+      value: 
+      objectReference: {fileID: 883228366}
+    - target: {fileID: 114327268428132560, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 1670315755}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 225f894c5fda7b94abc9e715511b5d80, type: 2}
   m_IsPrefabAsset: 0
@@ -10298,6 +10311,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 880787477}
   player: {fileID: 498132954}
+  playerScore: 0
+  bonusScore: 0
+  totalScore: 0
 --- !u!95 &880787480
 Animator:
   serializedVersion: 3
@@ -10384,6 +10400,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 883228367}
   player: {fileID: 498132954}
+  playerScore: 0
+  bonusScore: 0
+  totalScore: 0
 --- !u!114 &883228367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11053,6 +11072,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 786062324}
   m_Script: {fileID: 11500000, guid: f08384b6e337fb7438af8939b327bba9, type: 3}
+--- !u!54 &1670315750 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 54255098096051160, guid: 225f894c5fda7b94abc9e715511b5d80,
+    type: 2}
+  m_PrefabInternal: {fileID: 786062324}
 --- !u!96 &1670315754
 TrailRenderer:
   serializedVersion: 2
@@ -11154,6 +11178,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1670315755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670315747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd25728e322fbee48ad8c123520b3ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 498132954}
+  rb: {fileID: 1670315750}
+  powerState: 0
 --- !u!1 &1737175291
 GameObject:
   m_ObjectHideFlags: 0
@@ -11235,6 +11273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1737175296}
   player: {fileID: 498132954}
+  playerScore: 0
+  bonusScore: 0
+  totalScore: 0
 --- !u!114 &1737175296
 MonoBehaviour:
   m_ObjectHideFlags: 0

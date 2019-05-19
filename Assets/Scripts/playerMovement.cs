@@ -7,7 +7,11 @@ public class playerMovement : MonoBehaviour {
     [SerializeField]
     public int forwardForce;
 
+    public float ff;
+
     public float sidewaysForce;
+
+    public PowerState ps; 
 
     public TrailRenderer trail;
 
@@ -17,12 +21,25 @@ public class playerMovement : MonoBehaviour {
     }
     // Update is called once per frame
     void FixedUpdate () {
+
+        if(ps.powerState == (int)PowerState.PowerStates.EGO)
+        {
+            ff = forwardForce * 10;
+        }else if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
+            ps.powerState == (int)PowerState.PowerStates.CALM)
+        {
+            ff = forwardForce;
+        }else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
+        {
+            ff = (float)(0.1 * forwardForce);
+        }
+
         if (Input.touchCount > 0 || Input.GetKey("w")) {
             if (trail.startWidth <= 1.2f)
             {
                 trail.startWidth += 1f * Time.deltaTime;
             }
-            rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+            rb.AddForce(0, 0, ff * Time.deltaTime);
         }
         else
         {

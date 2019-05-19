@@ -21,7 +21,10 @@ public class gameManager : MonoBehaviour {
 
     [SerializeField]
     public ParticleSystem lemonParticles;
+    public ParticleSystem egoParticles;
     public playerMovement movement;
+
+    public PowerState ps; 
 
     public LemonScore lemons;
 
@@ -32,6 +35,8 @@ public class gameManager : MonoBehaviour {
     public GameObject startUI;
 
     public LemonScore endGameLemonScore;
+
+    public score s;
 
     private void Start()
     {
@@ -65,6 +70,7 @@ public class gameManager : MonoBehaviour {
             gameHasEnded = true;
             Debug.Log("Game Over");
             cameraX.GetComponent<followPlayer>().enabled = false;
+            
             Invoke("PlayEndAnimation", 2);
         }
     }
@@ -81,6 +87,7 @@ public class gameManager : MonoBehaviour {
     private void PlayEndAnimation()
     {
         deathUI.SetActive(true);
+        deathUI.GetComponentInChildren<score>().setScore(s.getScore());
     }
     public void RenderNewGround(float z)
     {
@@ -144,4 +151,15 @@ public class gameManager : MonoBehaviour {
         }
     }
 
+    public void gotEgo(Transform t, bool byPlayer)
+    {
+        ps.SetPowerState((int)PowerState.PowerStates.EGO);
+
+        Invoke("goNormal", 10);
+    }
+
+    public void goNormal()
+    {
+        ps.SetPowerState((int)PowerState.PowerStates.NORMAL);
+    }
 }
