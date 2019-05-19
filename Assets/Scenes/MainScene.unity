@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000012, guid: dd9ab45d91a1503468ee0498e31f00b1,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -288,6 +289,7 @@ MonoBehaviour:
   startUI: {fileID: 1891553358}
   endGameLemonScore: {fileID: 1737175293}
   s: {fileID: 883228366}
+  pc: {fileID: 1670315748}
 --- !u!4 &107168521
 Transform:
   m_ObjectHideFlags: 0
@@ -10128,8 +10130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 498132954}
+  ps: {fileID: 1670315755}
   offset: {x: 0, y: 9, z: -6}
+  anxietyOffset: {x: 0, y: 4.5, z: -3}
   cameraDamp: 0.1
+  calcOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &786062324
 Prefab:
   m_ObjectHideFlags: 0
@@ -10218,6 +10223,21 @@ Prefab:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1670315755}
+    - target: {fileID: 114327268428132560, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: minTrailWidth
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114327268428132560, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: maxTrailWidth
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 54255098096051160, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 225f894c5fda7b94abc9e715511b5d80, type: 2}
   m_IsPrefabAsset: 0
@@ -11066,6 +11086,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1798565245107452, guid: 225f894c5fda7b94abc9e715511b5d80,
     type: 2}
   m_PrefabInternal: {fileID: 786062324}
+--- !u!114 &1670315748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114424813014869162, guid: 225f894c5fda7b94abc9e715511b5d80,
+    type: 2}
+  m_PrefabInternal: {fileID: 786062324}
+  m_Script: {fileID: 11500000, guid: 003078a13ea43d943a0f07aaa0cc8742, type: 3}
 --- !u!114 &1670315749 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114327268428132560, guid: 225f894c5fda7b94abc9e715511b5d80,
@@ -11227,7 +11253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 91}
+  m_AnchoredPosition: {x: 0, y: 112}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737175293

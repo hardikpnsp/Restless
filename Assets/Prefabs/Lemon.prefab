@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e71749d8182c4646bad17e8494ffd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonParticles: {fileID: 0}
 --- !u!135 &135972207266555260
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -107,5 +106,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}

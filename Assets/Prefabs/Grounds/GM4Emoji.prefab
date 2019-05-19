@@ -1479,8 +1479,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1747330833562368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -7.5, z: -9.6}
-  m_LocalScale: {x: 15, y: 5, z: 1}
+  m_LocalPosition: {x: -1.5, y: -9.5, z: -9.6}
+  m_LocalScale: {x: 15, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 4709887929757846}
   m_RootOrder: 3
@@ -6977,8 +6977,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748,
-    type: 2}
+  ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  egoOrAnxiety: 1
   chance: 7
 --- !u!114 &114120534283929404
 MonoBehaviour:
@@ -6991,8 +6992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748,
-    type: 2}
+  ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  egoOrAnxiety: 1
   chance: 7
 --- !u!114 &114132793950780022
 MonoBehaviour:
@@ -7024,9 +7026,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3,
-    type: 2}
-  chance: 9
+  ego: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3, type: 2}
+  anxiety: {fileID: 1164273028822688, guid: a4e19e165610f11459a344c69a0d67df, type: 2}
+  egoOrAnxiety: 0
+  chance: 8
 --- !u!114 &114185245629503234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7049,8 +7052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748,
-    type: 2}
+  ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  egoOrAnxiety: 1
   chance: 7
 --- !u!114 &114202871854405702
 MonoBehaviour:
@@ -7063,8 +7067,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748,
-    type: 2}
+  ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  egoOrAnxiety: 1
   chance: 7
 --- !u!114 &114360068920781518
 MonoBehaviour:
@@ -7077,8 +7082,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748,
-    type: 2}
+  ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
+  egoOrAnxiety: 1
   chance: 7
 --- !u!114 &114905274420066764
 MonoBehaviour:

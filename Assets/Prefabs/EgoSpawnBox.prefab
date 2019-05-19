@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lemonPrefab: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3,
-    type: 2}
-  chance: 0
+  ego: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3, type: 2}
+  anxiety: {fileID: 1164273028822688, guid: a4e19e165610f11459a344c69a0d67df, type: 2}
+  egoOrAnxiety: 0
+  chance: 7

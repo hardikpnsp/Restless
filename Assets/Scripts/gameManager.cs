@@ -38,6 +38,8 @@ public class gameManager : MonoBehaviour {
 
     public score s;
 
+    public playerCollision pc;
+
     private void Start()
     {
 
@@ -59,6 +61,7 @@ public class gameManager : MonoBehaviour {
         current.GetComponentInChildren<SetText>().setText(0);
 
         groundNumber = 0;
+
  
     }
 
@@ -68,20 +71,19 @@ public class gameManager : MonoBehaviour {
         {
             endGameLemonScore.SetLemons(lemons.GetLemons()); 
             gameHasEnded = true;
-            Debug.Log("Game Over");
+            //Debug.Log("Game Over");
             cameraX.GetComponent<followPlayer>().enabled = false;
-            
             Invoke("PlayEndAnimation", 2);
         }
     }
 
     public void StartGame()
     {
-
         movement.enabled = true;
-
+        ps.StateChange();
+        pc.StateChange();
+        movement.StateChange();
         startUI.SetActive(false);
-
     }
 
     private void PlayEndAnimation()
@@ -91,7 +93,6 @@ public class gameManager : MonoBehaviour {
     }
     public void RenderNewGround(float z)
     {
-        Debug.Log(z);
         if (z < 0)
         {
             z = 1;
@@ -153,13 +154,51 @@ public class gameManager : MonoBehaviour {
 
     public void gotEgo(Transform t, bool byPlayer)
     {
-        ps.SetPowerState((int)PowerState.PowerStates.EGO);
-
-        Invoke("goNormal", 10);
+        if (byPlayer)
+        {
+            if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
+            ps.powerState == (int)PowerState.PowerStates.CALM ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
+            {
+                ps.SetPowerState((int)PowerState.PowerStates.EGO);
+                ps.StateChange();
+                pc.StateChange();
+                movement.StateChange();
+                Invoke("goNormal", 10);
+            }
+        }
     }
 
     public void goNormal()
     {
-        ps.SetPowerState((int)PowerState.PowerStates.NORMAL);
+        if (ps.powerState == (int)PowerState.PowerStates.EGO)
+        {
+            ps.SetPowerState((int)PowerState.PowerStates.TRANSITIONEGO);
+        }else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
+        {
+            ps.SetPowerState((int)PowerState.PowerStates.TRANSITIONANX);
+        }
+        ps.StateChange();
+        pc.StateChange();
+        movement.StateChange();
+    }
+
+    public void gotAnxiety(Transform t, bool byPlayer)
+    {
+        if (byPlayer)
+        {
+            if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
+            ps.powerState == (int)PowerState.PowerStates.CALM ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
+            {
+                ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
+                ps.StateChange();
+                pc.StateChange();
+                movement.StateChange();
+                Invoke("goNormal", 20);
+            }
+        }
     }
 }

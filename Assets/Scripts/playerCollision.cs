@@ -4,6 +4,7 @@ public class playerCollision : MonoBehaviour {
 
     public Rigidbody rb;
 
+    [SerializeField]
     public float sideForce;
 
     public playerMovement movement;
@@ -37,7 +38,7 @@ public class playerCollision : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
+        //wDebug.Log(collision.collider.tag);
         if (state != (int)States.DEAD) { 
             if (collision.collider.tag == "LeftSide")
             {
@@ -57,7 +58,10 @@ public class playerCollision : MonoBehaviour {
             }
             if (collision.collider.tag == "obstacle")
             {
-                if (ps.powerState == (int)PowerState.PowerStates.NORMAL)
+                if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
+                    ps.powerState == (int)PowerState.PowerStates.ANXIETY ||
+                    ps.powerState == (int)PowerState.PowerStates.CALM ||
+                    ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX)
                 {
                     state = (int)States.DEAD;
                     movement.enabled = false;
@@ -67,7 +71,8 @@ public class playerCollision : MonoBehaviour {
                     FindObjectOfType<AudioManager>().Stop("Breath");
                     FindObjectOfType<gameManager>().EndGame();
                 }
-                else if(ps.powerState == (int)PowerState.PowerStates.EGO)
+                else if(ps.powerState == (int)PowerState.PowerStates.EGO ||
+                    ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
                 {
                     s.addBonusScore(1);
                     FindObjectOfType<AudioManager>().Play("Fall");
@@ -82,19 +87,7 @@ public class playerCollision : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if(ps.powerState == (int)PowerState.PowerStates.EGO)
-        {
-            sf = 10 * sideForce;
-        }
-        else if(ps.powerState == (int)PowerState.PowerStates.NORMAL ||
-            ps.powerState == (int)PowerState.PowerStates.CALM)
-        {
-            sf = sideForce;
-        }
-        else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
-        {
-            sf = (float)(0.1 * sideForce);
-        }
+       
         if (state == (int)States.GOING_LEFT)
         {
             rb.AddForce((-1) * sf * Time.deltaTime, 0, 0);
@@ -105,10 +98,24 @@ public class playerCollision : MonoBehaviour {
         {
             
         }
-
-
-       
     }
 
-
+    public void StateChange()
+    {
+        if (ps.powerState == (int)PowerState.PowerStates.EGO)
+        {
+            sf = 10 * sideForce;
+        }
+        else if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
+            ps.powerState == (int)PowerState.PowerStates.CALM ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
+        {
+            sf = sideForce;
+        }
+        else if (ps.powerState == (int)PowerState.PowerStates.ANXIETY)
+        {
+            sf = (float)(0.2 * sideForce);
+        }
+    }
 }
