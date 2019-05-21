@@ -5,20 +5,9 @@ using TMPro;
 
 public class SetText : MonoBehaviour {
 
-
     public string[] quotes;
     public int[] quotesSpawn;
     public TextMeshPro text;
-    // Use this for initialization
-
-    void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void setText(int r)
     {

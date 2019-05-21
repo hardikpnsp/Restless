@@ -40,9 +40,15 @@ public class gameManager : MonoBehaviour {
 
     public playerCollision pc;
 
+    int highScore;
+    int totalLemons;
+
     private void Start()
     {
-
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        totalLemons = PlayerPrefs.GetInt("Lemons", 0);
+        startUI.GetComponentInChildren<HighScore>().SetHighScore("highscore: " + highScore);
+        startUI.GetComponentInChildren<TotalLemon>().SetTotalLemon("Lemons: " + totalLemons);
         quoteSpawn = new int[groundPrefabs.Length,extraQuotes];
         int i = 0;
         int j = 0;
@@ -69,10 +75,11 @@ public class gameManager : MonoBehaviour {
     {
         if (gameHasEnded == false)
         {
-            endGameLemonScore.SetLemons(lemons.GetLemons()); 
+
             gameHasEnded = true;
             //Debug.Log("Game Over");
             cameraX.GetComponent<followPlayer>().enabled = false;
+
             Invoke("PlayEndAnimation", 2);
         }
     }
@@ -90,6 +97,15 @@ public class gameManager : MonoBehaviour {
     {
         deathUI.SetActive(true);
         deathUI.GetComponentInChildren<score>().setScore(s.getScore());
+        endGameLemonScore.SetLemons(lemons.GetLemons());
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (highScore <= s.getScore())
+        {
+            PlayerPrefs.SetInt("HighScore", s.getScore());
+            startUI.GetComponentInChildren<HighScore>().SetHighScore("HigheScore: " + highScore);
+        };
+        totalLemons = PlayerPrefs.GetInt("Lemons", 0);
+        PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
     }
     public void RenderNewGround(float z)
     {
