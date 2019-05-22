@@ -217,4 +217,17 @@ public class gameManager : MonoBehaviour {
             }
         }
     }
+
+    public void OpenSecret()
+    {
+        totalLemons = PlayerPrefs.GetInt("Lemons", 0);
+        if (totalLemons >= 500)
+        {
+            Debug.Log("unleashing the secret");
+        }
+        else
+        {
+            startUI.GetComponentInChildren<SecretMessage>().SetText("You need 500 lemons for that");
+        }
+    }
 }

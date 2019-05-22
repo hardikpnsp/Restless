@@ -8,4 +8,9 @@ public class StartGame : MonoBehaviour {
     {
         FindObjectOfType<gameManager>().StartGame();
     }
+
+    public void OpenSecret()
+    {
+        FindObjectOfType<gameManager>().OpenSecret();
+    }
 }
