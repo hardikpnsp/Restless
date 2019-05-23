@@ -250,7 +250,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199246266411536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3068979, y: -9.699196, z: 35.59656}
+  m_LocalPosition: {x: 0, y: -9, z: 35}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -263,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200521192638078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3068795, y: -9.699196, z: -4.962818}
+  m_LocalPosition: {x: 0, y: -9, z: -5}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -289,7 +289,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1206733933276026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.43, y: -9.4, z: 37.12}
+  m_LocalPosition: {x: 0, y: -9, z: 37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -315,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602234516672794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.43, y: -9.4, z: -6.36}
+  m_LocalPosition: {x: 0, y: -9, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -328,7 +328,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013665678486728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5560172, y: -10.699196, z: 15.643963}
+  m_LocalPosition: {x: 0, y: -10, z: 15}
   m_LocalScale: {x: 15, y: 1, z: 100}
   m_Children:
   - {fileID: 4178674425079548}
@@ -344,7 +344,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898796669471016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.84, y: -9.4, z: -5}
+  m_LocalPosition: {x: -2, y: -9, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -357,7 +357,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830407682397890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -9.5, z: -9.6}
+  m_LocalPosition: {x: 0, y: -10, z: -15}
   m_LocalScale: {x: 15, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -370,7 +370,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592246270979972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.64, y: -9.4, z: 35.53}
+  m_LocalPosition: {x: 2, y: -9, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097018971457610}
@@ -798,8 +798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quotes:
-  - Red and Blue, rivals for life, yet keeping eachother on the right path.
-  - Red is hot, Blue is cool.
+  - 'True rivals keep each other on the correct path. What irony! '
+  - Red is hot, Blue is cool. Not true if we are talking about temperatures.
   - Life, in the begining is extremely simple. isn't it?
   quotesSpawn: 
   text: {fileID: 114335664834429260}

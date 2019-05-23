@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707601244127062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -9.5, z: -9.6}
+  m_LocalPosition: {x: 0, y: -10, z: -15}
   m_LocalScale: {x: 15, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 4040041526908986}
@@ -198,7 +198,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065596704198796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5560172, y: -10.699196, z: 15.643963}
+  m_LocalPosition: {x: 0, y: -10, z: 15}
   m_LocalScale: {x: 15, y: 1, z: 100}
   m_Children:
   - {fileID: 4445278536558752}
@@ -214,7 +214,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789130684179700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.43, y: -9.4, z: 20.88}
+  m_LocalPosition: {x: 0, y: -9, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4040041526908986}
@@ -632,6 +632,16 @@ MonoBehaviour:
   quotes:
   - The restless keep wandering side to side, staying in one position, not making
     any progress. Touch to move forward
+  - Yellow lemons are worth collecting. They represent challenge in life, achievements
+    when collected.
+  - You unlock the ultimate secret when you collect 500 yellow lemons
+  - Orange lemons represent Ego
+  - Blue lemons represent Anxiety
+  - When possesed by Ego, you become huge and bring destruction to the world
+  - Becareful when possesed by Ego because after sometime Ego bursts, leaving you
+    vaunerable
+  - When possesed by Anxiety, your problems grow bigger but it allows you to work
+    with more precision
   quotesSpawn: 
   text: {fileID: 114469806870997750}
 --- !u!114 &114915700033179450

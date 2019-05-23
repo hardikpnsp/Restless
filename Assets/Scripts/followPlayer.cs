@@ -8,13 +8,13 @@ public class followPlayer : MonoBehaviour {
     public Vector3 anxietyOffset;
     public float cameraDamp;
     float cd;
-    [SerializeField]
     public Vector3 calcOffset;
     // Update is called once per frame
     public void Start()
     {
         cd = 0f;
         calcOffset = offset;
+        transform.position = player.position + offset;
     }
     public void Update () {
         if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
@@ -32,7 +32,7 @@ public class followPlayer : MonoBehaviour {
                 cd = 0.6f;
             }
             Vector3 v = player.position + calcOffset;
-            v.x = (float)((player.position.x * cd) - 1.4);
+            v.x = (float)(player.position.x * cd);
             transform.position = v;
         }
         else
@@ -44,12 +44,13 @@ public class followPlayer : MonoBehaviour {
             if(cd > cameraDamp)
             {
                 cd -= (float)(0.3 * Time.deltaTime);
-            }if(cd >= cameraDamp - 0.07f && cd <= cameraDamp + 0.07f)
+            }
+            if (cd >= cameraDamp - 0.07f && cd <= cameraDamp + 0.07f)
             {
                 cd = cameraDamp;
             }
             Vector3 v = player.position + calcOffset;
-            v.x = (float)((player.position.x * cd) - 1.4);
+            v.x = (float)(player.position.x * cd);
             transform.position = v;
         }
 	}

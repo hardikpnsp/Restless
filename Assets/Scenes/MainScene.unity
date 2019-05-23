@@ -431,6 +431,11 @@ MonoBehaviour:
   - {fileID: 1093169178981918, guid: a63cb6f9e2ed6374d8ca31632baa427b, type: 2}
   - {fileID: 1443418164642710, guid: e4608560cdc0a7346b2fedc7e215ede6, type: 2}
   - {fileID: 1961041224309238, guid: 05c6be0e7defb104db2a8984c37831d0, type: 2}
+  - {fileID: 1017169484632110, guid: 72e058bf0ad74d343b52c1560de6219e, type: 2}
+  - {fileID: 1217710489325488, guid: c8f89c9fbd49cf84484fb3c701aad078, type: 2}
+  - {fileID: 1288175958063340, guid: 4c13d1c01de139143b45603aedaf522b, type: 2}
+  - {fileID: 1259777050198862, guid: a37aaa51430d30e459ff8381199d410e, type: 2}
+  - {fileID: 1391563985342298, guid: e2db8170fee4cb042b93f8556774ccb0, type: 2}
   extraQuotes: 10
   cameraX: {fileID: 534669902}
   groundNumber: 0
@@ -445,6 +450,7 @@ MonoBehaviour:
   endGameLemonScore: {fileID: 1737175293}
   s: {fileID: 883228366}
   pc: {fileID: 1670315748}
+  qm: {fileID: 1258779888}
 --- !u!4 &107168521
 Transform:
   m_ObjectHideFlags: 0
@@ -10435,7 +10441,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4565945687696304, guid: 225f894c5fda7b94abc9e715511b5d80, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -9
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 4565945687696304, guid: 225f894c5fda7b94abc9e715511b5d80, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10523,7 +10529,7 @@ Prefab:
     - target: {fileID: 54255098096051160, guid: 225f894c5fda7b94abc9e715511b5d80,
         type: 2}
       propertyPath: m_Constraints
-      value: 80
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 23546879025985570, guid: 225f894c5fda7b94abc9e715511b5d80,
         type: 2}
@@ -11203,6 +11209,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c40b6020d39ec46af0554648249696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1258779887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258779889}
+  - component: {fileID: 1258779888}
+  m_Layer: 0
+  m_Name: QuoteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1258779888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1258779887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184dd7f00702c4147afaad5768899664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1258779889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1258779887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473322993
 GameObject:
   m_ObjectHideFlags: 0

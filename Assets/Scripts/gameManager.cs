@@ -43,12 +43,19 @@ public class gameManager : MonoBehaviour {
     int highScore;
     int totalLemons;
 
+    public QuoteManager qm;
+
     private void Start()
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         startUI.GetComponentInChildren<HighScore>().SetHighScore("highscore: " + highScore);
         startUI.GetComponentInChildren<TotalLemon>().SetTotalLemon("Lemons: " + totalLemons);
+
+        qm.SetUpQuoteManager(groundPrefabs.Length, extraQuotes);
+
+        //QuoteManager in- groundPrefabs.Length, extraQuotes
+        /*
         quoteSpawn = new int[groundPrefabs.Length,extraQuotes];
         int i = 0;
         int j = 0;
@@ -59,13 +66,16 @@ public class gameManager : MonoBehaviour {
                 quoteSpawn[i,j] = 1;
             }
         }
-
+        */
         movement.enabled = false;
 
         current = Instantiate(groundPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
 
-        current.GetComponentInChildren<SetText>().setText(0);
-
+        //QuoteManager in- current type: gameObject
+        qm.SetQuote(current, 0);
+        //comment this 
+        //current.GetComponentInChildren<SetText>().setText(Random.Range(0, 8));
+        //comment this end
         groundNumber = 0;
 
  
@@ -107,6 +117,8 @@ public class gameManager : MonoBehaviour {
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
     }
+
+
     public void RenderNewGround(float z)
     {
         if (z < 0)
@@ -116,6 +128,10 @@ public class gameManager : MonoBehaviour {
             //Debug.Log("r: " + r);
             //Debug.Log("z: " + z);
             buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
+
+            //QuoteManager
+            qm.SetQuoteWithProbability(buffer2, r);
+            /*
             int quoteNumber = Random.Range(0, extraQuotes);
 
             while (quoteSpawn[r, quoteNumber] != 1)
@@ -124,6 +140,7 @@ public class gameManager : MonoBehaviour {
             }
             quoteSpawn[r, quoteNumber] = 0;
             buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
+            */
         }
         else {
             z = (int)(z / 100);
@@ -134,7 +151,9 @@ public class gameManager : MonoBehaviour {
             buffer0 = current;
             current = buffer2;
             buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
-
+            //QuoteManager
+            qm.SetQuoteWithProbability(buffer2, r);
+            /*
             int quoteNumber = Random.Range(0, extraQuotes);
             
             while(quoteSpawn[r,quoteNumber] != 1)
@@ -143,6 +162,7 @@ public class gameManager : MonoBehaviour {
             }
             quoteSpawn[r, quoteNumber] = 0;
             buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
+            */
             Destroy(buffer0);
         
         }
