@@ -45,12 +45,42 @@ public class gameManager : MonoBehaviour {
 
     public QuoteManager qm;
 
+    public SecretUnlocked secret;
+
+    public bool GoToOblivion;
+
+    public GameObject[] OblivionPrefabs;
+
+    public int oblivionCount = 0;
+
+    public GameObject ScoreUI;
+    public GameObject LemonUI;
     private void Start()
     {
+
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         startUI.GetComponentInChildren<HighScore>().SetHighScore("highscore: " + highScore);
         startUI.GetComponentInChildren<TotalLemon>().SetTotalLemon("Lemons: " + totalLemons);
+
+        if (secret.GetSecret())
+        {
+            Debug.Log("Going to the oblivion");
+            GoToOblivion = true;
+            startUI.GetComponentInChildren<SecretMessage>().SetText("Welcome to the oblivion, Hit Play!");
+            current = Instantiate(OblivionPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
+            qm.SetOblivionQuotes(current);
+            ScoreUI.SetActive(false);
+            LemonUI.SetActive(false);
+            pc.state = (int)playerCollision.States.CALM;
+            oblivionCount++;
+        }
+        else
+        {
+            pc.state = (int)playerCollision.States.GOING_LEFT;
+            current = Instantiate(groundPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
+            qm.SetQuote(current, 0);
+        }
 
         qm.SetUpQuoteManager(groundPrefabs.Length, extraQuotes);
 
@@ -69,16 +99,15 @@ public class gameManager : MonoBehaviour {
         */
         movement.enabled = false;
 
-        current = Instantiate(groundPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity);
+        
 
         //QuoteManager in- current type: gameObject
-        qm.SetQuote(current, 0);
+
         //comment this 
         //current.GetComponentInChildren<SetText>().setText(Random.Range(0, 8));
         //comment this end
         groundNumber = 0;
 
- 
     }
 
     public void EndGame()
@@ -89,7 +118,10 @@ public class gameManager : MonoBehaviour {
             gameHasEnded = true;
             //Debug.Log("Game Over");
             cameraX.GetComponent<followPlayer>().enabled = false;
-
+            if (GoToOblivion)
+            {
+                secret.SetSecretUnlocked(false);
+            }
             Invoke("PlayEndAnimation", 2);
         }
     }
@@ -106,69 +138,129 @@ public class gameManager : MonoBehaviour {
     private void PlayEndAnimation()
     {
         deathUI.SetActive(true);
-        deathUI.GetComponentInChildren<score>().setScore(s.getScore());
-        endGameLemonScore.SetLemons(lemons.GetLemons());
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
-        if (highScore <= s.getScore())
+        if (!GoToOblivion)
         {
-            PlayerPrefs.SetInt("HighScore", s.getScore());
-            startUI.GetComponentInChildren<HighScore>().SetHighScore("HigheScore: " + highScore);
-        };
-        totalLemons = PlayerPrefs.GetInt("Lemons", 0);
-        PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
+            deathUI.GetComponentInChildren<score>().setScore(s.getScore());
+            endGameLemonScore.SetLemons(lemons.GetLemons());
+            highScore = PlayerPrefs.GetInt("HighScore", 0);
+            if (highScore <= s.getScore())
+            {
+                PlayerPrefs.SetInt("HighScore", s.getScore());
+                startUI.GetComponentInChildren<HighScore>().SetHighScore("HigheScore: " + highScore);
+            };
+            totalLemons = PlayerPrefs.GetInt("Lemons", 0);
+            PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
+        }
+        else
+        {
+            deathUI.GetComponentInChildren<score>().setScore(42);
+            endGameLemonScore.SetLemons(42);
+            totalLemons = PlayerPrefs.GetInt("Lemons", 0);
+            PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
+        }
     }
 
 
     public void RenderNewGround(float z)
     {
-        if (z < 0)
+        if (GoToOblivion)
         {
-            z = 1;
-            int r = Random.Range(0, groundPrefabs.Length);
-            //Debug.Log("r: " + r);
-            //Debug.Log("z: " + z);
-            buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
-
-            //QuoteManager
-            qm.SetQuoteWithProbability(buffer2, r);
-            /*
-            int quoteNumber = Random.Range(0, extraQuotes);
-
-            while (quoteSpawn[r, quoteNumber] != 1)
+            if (oblivionCount < 16)
             {
-                quoteNumber = Random.Range(0, extraQuotes);
+                if (z < 0)
+                {
+                    z = 1;
+                    //Debug.Log("r: " + r);
+                    //Debug.Log("z: " + z);
+                    buffer2 = Instantiate(OblivionPrefabs[0], new Vector3(0, 0, z * 100), Quaternion.identity);
+                    oblivionCount++;
+                    //QuoteManager
+                    qm.SetOblivionQuotes(buffer2);
+                }
+                else
+                {
+                    z = (int)(z / 100);
+                    z = z + 2;
+                    //Debug.Log("r: " + r);
+                    //Debug.Log("z: " + z);
+                    buffer0 = current;
+                    current = buffer2;
+                    buffer2 = Instantiate(OblivionPrefabs[0], new Vector3(0, 0, z * 100), Quaternion.identity);
+                    oblivionCount++;
+                    //QuoteManager
+                    qm.SetOblivionQuotes(buffer2);
+
+                    Destroy(buffer0);
+
+                }
+                //current.GetComponent<GroundTrigger>().enabled = false;
+                groundNumber++;
+                //Debug.Log("Ground: " + groundNumber);
             }
-            quoteSpawn[r, quoteNumber] = 0;
-            buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
-            */
-        }
-        else {
-            z = (int)(z / 100);
-            z = z + 2;
-            int r = Random.Range(1, groundPrefabs.Length);
-            //Debug.Log("r: " + r);
-            //Debug.Log("z: " + z);
-            buffer0 = current;
-            current = buffer2;
-            buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
-            //QuoteManager
-            qm.SetQuoteWithProbability(buffer2, r);
-            /*
-            int quoteNumber = Random.Range(0, extraQuotes);
-            
-            while(quoteSpawn[r,quoteNumber] != 1)
+            else
             {
-                quoteNumber = Random.Range(0, extraQuotes);
+                z = (int)(z / 100);
+                z = z + 2;
+                buffer0 = current;
+                current = buffer2;
+                buffer2 = Instantiate(OblivionPrefabs[1], new Vector3(0, 0, z * 100), Quaternion.identity);
+                oblivionCount++;
+                //QuoteManager
+                Destroy(buffer0);
             }
-            quoteSpawn[r, quoteNumber] = 0;
-            buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
-            */
-            Destroy(buffer0);
-        
         }
-        //current.GetComponent<GroundTrigger>().enabled = false;
-        groundNumber++;
-        //Debug.Log("Ground: " + groundNumber);
+        else
+        {
+            if (z < 0)
+            {
+                z = 1;
+                int r = Random.Range(0, groundPrefabs.Length);
+                //Debug.Log("r: " + r);
+                //Debug.Log("z: " + z);
+                buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
+
+                //QuoteManager
+                qm.SetQuoteWithProbability(buffer2, r);
+                /*
+                int quoteNumber = Random.Range(0, extraQuotes);
+
+                while (quoteSpawn[r, quoteNumber] != 1)
+                {
+                    quoteNumber = Random.Range(0, extraQuotes);
+                }
+                quoteSpawn[r, quoteNumber] = 0;
+                buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
+                */
+            }
+            else
+            {
+                z = (int)(z / 100);
+                z = z + 2;
+                int r = Random.Range(1, groundPrefabs.Length);
+                //Debug.Log("r: " + r);
+                //Debug.Log("z: " + z);
+                buffer0 = current;
+                current = buffer2;
+                buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
+                //QuoteManager
+                qm.SetQuoteWithProbability(buffer2, r);
+                /*
+                int quoteNumber = Random.Range(0, extraQuotes);
+
+                while(quoteSpawn[r,quoteNumber] != 1)
+                {
+                    quoteNumber = Random.Range(0, extraQuotes);
+                }
+                quoteSpawn[r, quoteNumber] = 0;
+                buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
+                */
+                Destroy(buffer0);
+
+            }
+            //current.GetComponent<GroundTrigger>().enabled = false;
+            groundNumber++;
+            //Debug.Log("Ground: " + groundNumber);
+        }
     }
 
     public void Restart()
@@ -243,7 +335,8 @@ public class gameManager : MonoBehaviour {
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         if (totalLemons >= 500)
         {
-            Debug.Log("unleashing the secret");
+            secret.SetSecretUnlocked(true);
+            startUI.GetComponentInChildren<SecretMessage>().SetText("Play! you are in the end game now!");
         }
         else
         {

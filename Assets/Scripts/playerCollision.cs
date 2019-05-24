@@ -20,11 +20,12 @@ public class playerCollision : MonoBehaviour {
 
     public float sf;
 
-    enum States
+    public enum States
     {
         GOING_RIGHT,
         GOING_LEFT,
-        DEAD
+        DEAD,
+        CALM
     };
 
     public int state;
@@ -32,7 +33,6 @@ public class playerCollision : MonoBehaviour {
     void Start()
     {
         sf = sideForce;
-        state = (int)States.GOING_LEFT;
         FindObjectOfType<AudioManager>().Play("Breath");
     }
 
@@ -94,10 +94,11 @@ public class playerCollision : MonoBehaviour {
         }else if(state == (int)States.GOING_RIGHT)
         {
             rb.AddForce(sf * Time.deltaTime, 0, 0);
-        }else if(state == (int)States.DEAD)
+        }else if(state == (int)States.CALM)
         {
-            
+
         }
+        Debug.Log("state: " + state);
     }
 
     public void StateChange()

@@ -8,16 +8,20 @@ public class score : MonoBehaviour {
     public int playerScore;
     public int bonusScore;
     public int totalScore;
+    public bool setScoreCalled = false;
 	// Update is called once per frame
 	void Update () {
-        playerScore = (int)player.position.z / 10;
-        if (player.position.z >= 0)
+        if (!setScoreCalled)
         {
-            if(totalScore < playerScore + bonusScore)
+            playerScore = (int)player.position.z / 10;
+            if (player.position.z >= 0)
             {
-                totalScore = playerScore + bonusScore;
+                if (totalScore < playerScore + bonusScore)
+                {
+                    totalScore = playerScore + bonusScore;
+                }
+                scoreText.text = (totalScore).ToString();
             }
-            scoreText.text = (totalScore).ToString();
         }
 	}
 
@@ -34,5 +38,7 @@ public class score : MonoBehaviour {
     public void setScore(int s)
     {
         totalScore = s;
+        setScoreCalled = true;
+        scoreText.text = (totalScore).ToString();
     }
 }

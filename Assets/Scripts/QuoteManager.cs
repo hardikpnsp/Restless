@@ -13,11 +13,16 @@ public class QuoteManager : MonoBehaviour
 
     int quoteNumber;
     int counter;
+
+    int oblivionCounter = 0;
+
     private void Awake()
     {
+        
         if (instance == null)
         {
             instance = this;
+            oblivionCounter = 0;
             //Debug.Log("instance created");
         }
         else
@@ -93,4 +98,11 @@ public class QuoteManager : MonoBehaviour
             counter++;
         }
     }
+
+    public void SetOblivionQuotes(GameObject ground)
+    {
+        ground.GetComponentInChildren<SetText>().setText(oblivionCounter);
+        oblivionCounter++;
+    }
+
 }

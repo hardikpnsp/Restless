@@ -12,7 +12,7 @@ public class followPlayer : MonoBehaviour {
     // Update is called once per frame
     public void Start()
     {
-        cd = 0f;
+        cd = 0.1f;
         calcOffset = offset;
         transform.position = player.position + offset;
     }
