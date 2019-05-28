@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.02
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300538, g: 0.4921952, b: 0.57192355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -59,13 +59,13 @@ LightmapSettings:
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
-    m_AO: 0
+    m_AO: 1
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
-    m_LightmapsBakeMode: 1
+    m_LightmapsBakeMode: 0
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: dd9ab45d91a1503468ee0498e31f00b1,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -148,7 +149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -15}
+  m_AnchoredPosition: {x: 152, y: -85}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &6960791
@@ -185,13 +186,14 @@ MonoBehaviour:
   playerScore: 0
   bonusScore: 0
   totalScore: 0
+  setScoreCalled: 0
 --- !u!114 &6960793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 6960789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -211,7 +213,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 70
-    m_Alignment: 2
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -264,7 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491591fc72005d046bcbe088ea1cbc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secretUnlocked: 0
 --- !u!4 &62770994
 Transform:
   m_ObjectHideFlags: 0
@@ -500,6 +501,8 @@ MonoBehaviour:
   oblivionCount: 0
   ScoreUI: {fileID: 883228363}
   LemonUI: {fileID: 6960789}
+  totalScore: 0
+  unlockedLevels: 0
 --- !u!4 &107168521
 Transform:
   m_ObjectHideFlags: 0
@@ -10415,8 +10418,8 @@ Camera:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0.64561653, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -10430,13 +10433,13 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: 1
+  m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -10444,7 +10447,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &534669905
@@ -10453,13 +10456,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
-  m_LocalPosition: {x: 0, y: 9, z: -5}
+  m_LocalRotation: {x: 0.49572244, y: 0.113038965, z: -0.06526308, w: 0.8586165}
+  m_LocalPosition: {x: 5, y: 50, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 15, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10473,10 +10476,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 498132954}
   ps: {fileID: 1670315755}
-  offset: {x: 0, y: 8, z: -7}
-  anxietyOffset: {x: 0, y: 5, z: -4}
+  c: {fileID: 534669904}
+  offset: {x: -9, y: 59, z: -20}
+  anxietyOffset: {x: -9, y: 59, z: -25}
   cameraDamp: 0.1
   calcOffset: {x: 0, y: 0, z: 0}
+  anxietySize: 12
+  normalSize: 18
+  rotationSet: {x: 60, y: 15, z: 0}
+  cameraRotate: {x: 0, y: 0, z: 0}
+  rotationSpeed: {x: 0, y: 0, z: 0}
 --- !u!1001 &786062324
 Prefab:
   m_ObjectHideFlags: 0
@@ -10585,6 +10594,26 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8f27d33597dacdb4fbe31688b6db807f, type: 2}
+    - target: {fileID: 54255098096051160, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65758264668969856, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 65758264668969856, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114327268428132560, guid: 225f894c5fda7b94abc9e715511b5d80,
+        type: 2}
+      propertyPath: forwardForce
+      value: 2200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 225f894c5fda7b94abc9e715511b5d80, type: 2}
   m_IsPrefabAsset: 0
@@ -10637,7 +10666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.011764707, g: 0.08235294, b: 0.69411767, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10681,6 +10710,7 @@ MonoBehaviour:
   playerScore: 0
   bonusScore: 0
   totalScore: 0
+  setScoreCalled: 0
 --- !u!95 &880787480
 Animator:
   serializedVersion: 3
@@ -10733,7 +10763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -15}
+  m_AnchoredPosition: {x: -140, y: -84}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &883228365
@@ -10770,6 +10800,7 @@ MonoBehaviour:
   playerScore: 0
   bonusScore: 0
   totalScore: 0
+  setScoreCalled: 0
 --- !u!114 &883228367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10782,7 +10813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.011764707, g: 0.08235294, b: 0.69411767, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10796,7 +10827,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 70
-    m_Alignment: 0
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -12053,6 +12084,18 @@ MonoBehaviour:
   playerTransform: {fileID: 498132954}
   rb: {fileID: 1670315750}
   powerState: 0
+--- !u!135 &1670315756
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670315747}
+  m_Material: {fileID: 13400000, guid: dc23a81ddb5e84048a151dfbb4e97617, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1737175291
 GameObject:
   m_ObjectHideFlags: 0
@@ -12086,10 +12129,10 @@ RectTransform:
   m_Father: {fileID: 1208240291}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 114}
-  m_SizeDelta: {x: 0, y: 30}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -104}
+  m_SizeDelta: {x: 800, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737175293
 MonoBehaviour:
@@ -12137,6 +12180,7 @@ MonoBehaviour:
   playerScore: 0
   bonusScore: 0
   totalScore: 0
+  setScoreCalled: 0
 --- !u!114 &1737175296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17638,7 +17682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &2091998346
 MeshCollider:
   m_ObjectHideFlags: 0

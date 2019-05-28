@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4062625418588644}
   - component: {fileID: 114092151308950228}
   m_Layer: 0
-  m_Name: EgoSpawnBox
+  m_Name: EgoSpawnBox (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,6 +300,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1504897439195408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4679123424382954}
+  - component: {fileID: 114053070941131512}
+  m_Layer: 0
+  m_Name: EgoSpawnBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1509775371341378
 GameObject:
   m_ObjectHideFlags: 1
@@ -391,6 +407,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1703867256480608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4323457961527074}
+  - component: {fileID: 114907630159968420}
+  m_Layer: 0
+  m_Name: EgoSpawnBox (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1709592241935368
 GameObject:
@@ -519,6 +551,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1799396572902106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4718314786480814}
+  - component: {fileID: 114019634629947776}
+  m_Layer: 0
+  m_Name: EgoSpawnBox (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1809035779182784
 GameObject:
@@ -709,6 +757,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1964572419359356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4355216872401560}
+  - component: {fileID: 114728251795195874}
+  m_Layer: 0
+  m_Name: EgoSpawnBox (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1987798188544998
 GameObject:
   m_ObjectHideFlags: 1
@@ -761,11 +825,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004725769288354}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: -7}
+  m_LocalPosition: {x: -6, y: -9, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4222563655155944}
-  m_RootOrder: 2
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4075451421174944
 Transform:
@@ -857,12 +921,16 @@ Transform:
   m_Children:
   - {fileID: 4820852454110850}
   - {fileID: 4387328996433944}
-  - {fileID: 4062625418588644}
+  - {fileID: 4679123424382954}
   - {fileID: 4499798023545528}
   - {fileID: 4401991635489456}
   - {fileID: 4843147403120264}
   - {fileID: 4940166850119270}
   - {fileID: 4732212905647506}
+  - {fileID: 4323457961527074}
+  - {fileID: 4355216872401560}
+  - {fileID: 4718314786480814}
+  - {fileID: 4062625418588644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -891,6 +959,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4401991635489456}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4323457961527074
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703867256480608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: -9, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4222563655155944}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4355216872401560
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964572419359356}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: -9, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4222563655155944}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4387328996433944
 Transform:
@@ -1130,6 +1224,32 @@ Transform:
   m_Father: {fileID: 4499798023545528}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &4679123424382954
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504897439195408}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -9, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4222563655155944}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4718314786480814
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799396572902106}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: -9, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4222563655155944}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4732212905647506
 Transform:
   m_ObjectHideFlags: 1
@@ -3395,6 +3515,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114019634629947776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1799396572902106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ego: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3, type: 2}
+  anxiety: {fileID: 1164273028822688, guid: a4e19e165610f11459a344c69a0d67df, type: 2}
+  egoOrAnxiety: 2
+  chance: -1
+--- !u!114 &114053070941131512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504897439195408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ego: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3, type: 2}
+  anxiety: {fileID: 1164273028822688, guid: a4e19e165610f11459a344c69a0d67df, type: 2}
+  egoOrAnxiety: 2
+  chance: -1
 --- !u!114 &114083870241502662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3596,6 +3746,21 @@ MonoBehaviour:
   anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   egoOrAnxiety: 0
   chance: 7
+--- !u!114 &114728251795195874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964572419359356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ego: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3, type: 2}
+  anxiety: {fileID: 1164273028822688, guid: a4e19e165610f11459a344c69a0d67df, type: 2}
+  egoOrAnxiety: 2
+  chance: -1
 --- !u!114 &114824092156427820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3613,6 +3778,21 @@ MonoBehaviour:
   - 'Why rush? Chillex!        '
   quotesSpawn: 
   text: {fileID: 114116380215071860}
+--- !u!114 &114907630159968420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703867256480608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafc2a9b3d731544da994740dac577b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ego: {fileID: 1434201673655794, guid: e4d8c0027fae57d419e51ab9f73622a3, type: 2}
+  anxiety: {fileID: 1164273028822688, guid: a4e19e165610f11459a344c69a0d67df, type: 2}
+  egoOrAnxiety: 2
+  chance: -1
 --- !u!222 &222420608655970480
 CanvasRenderer:
   m_ObjectHideFlags: 1

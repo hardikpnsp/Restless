@@ -55,11 +55,108 @@ public class gameManager : MonoBehaviour {
 
     public GameObject ScoreUI;
     public GameObject LemonUI;
+
+    public int totalScore;
+
+    public int unlockedLevels = 0;
     private void Start()
     {
 
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
+        totalScore = PlayerPrefs.GetInt("TotalScore", 1);
+        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 4);
+
+
+
+        /*
+        int d = 50;
+        
+        if(totalScore <= 100)
+        {
+            d = 50;
+        }else if(totalScore < 500)
+        {
+            d = 100;
+        }else if(totalScore < 1000)
+        {
+            d = 160;
+        }
+        else if(totalScore < 2500)
+        {
+            d = 250;
+        }
+        else
+        {
+            d = 300;
+        }
+
+        int calcUnlockedLevels = (int) totalScore/d + 4;
+        if (unlockedLevels != calcUnlockedLevels && unlockedLevels != groundPrefabs.Length)
+        {
+            if(calcUnlockedLevels > groundPrefabs.Length && unlockedLevels < groundPrefabs.Length && calcUnlockedLevels > unlockedLevels)
+            {
+                startUI.GetComponentInChildren<SecretMessage>().SetText(
+                    "You have unlocked " +
+                    (groundPrefabs.Length - unlockedLevels) +
+                    " new levels, keep playing!");
+                unlockedLevels = groundPrefabs.Length;
+                PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
+            }
+            else if(calcUnlockedLevels > unlockedLevels)
+            {
+                startUI.GetComponentInChildren<SecretMessage>().SetText(
+                    "You have unlocked " +
+                    (calcUnlockedLevels - unlockedLevels) +
+                    " new levels, keep playing!");
+                unlockedLevels = calcUnlockedLevels;
+                PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
+            }
+        }
+        */
+
+        //level unlcok system begins
+        /*
+        if (totalScore > 2000 && unlockedLevels < 20)
+        {
+            startUI.GetComponentInChildren<SecretMessage>().SetText(
+                   "You have unlocked " +
+                   (20 - unlockedLevels) +
+                   " new levels, keep playing!");
+            unlockedLevels = 20;
+            PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
+        }else if (totalScore > 1000 && unlockedLevels < 15)
+        {
+            startUI.GetComponentInChildren<SecretMessage>().SetText(
+                    "You have unlocked " +
+                    (15 - unlockedLevels) +
+                    " new levels, keep playing!");
+            unlockedLevels = 15;
+            PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
+        }else if(totalScore > 500 && unlockedLevels < 10)
+        {
+            startUI.GetComponentInChildren<SecretMessage>().SetText(
+                   "You have unlocked " +
+                   (10 - unlockedLevels) +
+                   " new levels, keep playing!");
+            unlockedLevels = 10;
+            PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
+        }
+        else
+        {
+            unlockedLevels = 6;
+        }
+
+        if(unlockedLevels > groundPrefabs.Length)
+        {
+            unlockedLevels = groundPrefabs.Length;
+        }
+        */
+        unlockedLevels = groundPrefabs.Length;
+        //level unlock system end
+
+        Debug.Log("unlockedLevels : " + unlockedLevels);
+
         startUI.GetComponentInChildren<HighScore>().SetHighScore("highscore: " + highScore);
         startUI.GetComponentInChildren<TotalLemon>().SetTotalLemon("Lemons: " + totalLemons);
 
@@ -150,13 +247,19 @@ public class gameManager : MonoBehaviour {
             };
             totalLemons = PlayerPrefs.GetInt("Lemons", 0);
             PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
+            totalScore = PlayerPrefs.GetInt("TotalScore", 1);
+            totalScore += s.getScore();
+            PlayerPrefs.SetInt("TotalScore", totalScore);
         }
         else
         {
             deathUI.GetComponentInChildren<score>().setScore(42);
             endGameLemonScore.SetLemons(42);
             totalLemons = PlayerPrefs.GetInt("Lemons", 0);
-            PlayerPrefs.SetInt("Lemons", totalLemons + lemons.GetLemons());
+            PlayerPrefs.SetInt("Lemons", totalLemons + 42);
+            totalScore = PlayerPrefs.GetInt("TotalScore", 1);
+            totalScore += 42;
+            PlayerPrefs.SetInt("TotalScore", totalScore);
         }
     }
 
@@ -214,7 +317,7 @@ public class gameManager : MonoBehaviour {
             if (z < 0)
             {
                 z = 1;
-                int r = Random.Range(0, groundPrefabs.Length);
+                int r = Random.Range(0, unlockedLevels);
                 //Debug.Log("r: " + r);
                 //Debug.Log("z: " + z);
                 buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
@@ -236,7 +339,7 @@ public class gameManager : MonoBehaviour {
             {
                 z = (int)(z / 100);
                 z = z + 2;
-                int r = Random.Range(1, groundPrefabs.Length);
+                int r = Random.Range(1, unlockedLevels);
                 //Debug.Log("r: " + r);
                 //Debug.Log("z: " + z);
                 buffer0 = current;
@@ -293,6 +396,21 @@ public class gameManager : MonoBehaviour {
                 ps.StateChange();
                 pc.StateChange();
                 movement.StateChange();
+                CancelInvoke("goNormal");
+                Invoke("goNormal", 10);
+            }
+            else if (ps.powerState == (int)PowerState.PowerStates.EGO)
+            {
+                CancelInvoke("goNormal");
+                Invoke("goNormal", 10);
+            } 
+            else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
+            {
+                CancelInvoke("goNormal");
+                ps.SetPowerState((int)PowerState.PowerStates.EGO);
+                ps.StateChange();
+                pc.StateChange();
+                movement.StateChange();
                 Invoke("goNormal", 10);
             }
         }
@@ -300,6 +418,7 @@ public class gameManager : MonoBehaviour {
 
     public void goNormal()
     {
+        Debug.Log("going normal");
         if (ps.powerState == (int)PowerState.PowerStates.EGO)
         {
             ps.SetPowerState((int)PowerState.PowerStates.TRANSITIONEGO);
@@ -321,6 +440,21 @@ public class gameManager : MonoBehaviour {
             ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX ||
             ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
             {
+                ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
+                ps.StateChange();
+                pc.StateChange();
+                movement.StateChange();
+                CancelInvoke("goNormal");
+                Invoke("goNormal", 20);
+            }
+            else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
+            {
+                CancelInvoke("goNormal");
+                Invoke("goNormal", 20);
+            }
+            else if(ps.powerState == (int)PowerState.PowerStates.EGO)
+            {
+                CancelInvoke("goNormal");
                 ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
                 ps.StateChange();
                 pc.StateChange();

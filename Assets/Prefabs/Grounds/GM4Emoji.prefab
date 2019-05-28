@@ -6980,7 +6980,7 @@ MonoBehaviour:
   ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   egoOrAnxiety: 1
-  chance: -1
+  chance: 7
 --- !u!114 &114120534283929404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6995,7 +6995,7 @@ MonoBehaviour:
   ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   egoOrAnxiety: 1
-  chance: -1
+  chance: 7
 --- !u!114 &114132793950780022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7055,7 +7055,7 @@ MonoBehaviour:
   ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   egoOrAnxiety: 1
-  chance: -1
+  chance: 7
 --- !u!114 &114202871854405702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7070,7 +7070,7 @@ MonoBehaviour:
   ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   egoOrAnxiety: 1
-  chance: -1
+  chance: 7
 --- !u!114 &114360068920781518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7085,7 +7085,7 @@ MonoBehaviour:
   ego: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   anxiety: {fileID: 1340616328434974, guid: 2b1adcf168708ca4f93b2e2e1f8ad748, type: 2}
   egoOrAnxiety: 1
-  chance: -1
+  chance: 7
 --- !u!114 &114905274420066764
 MonoBehaviour:
   m_ObjectHideFlags: 1

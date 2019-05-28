@@ -100,8 +100,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!65 &65758264668969856
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -127,7 +127,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 54255098096051160}
   forwardForce: 2000
-  sidewaysForce: 1000
+  ff: 0
+  ps: {fileID: 0}
+  trail: {fileID: 0}
+  minTrailWidth: 0
+  maxTrailWidth: 0
 --- !u!114 &114424813014869162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,4 +146,9 @@ MonoBehaviour:
   rb: {fileID: 54255098096051160}
   sideForce: 1000
   movement: {fileID: 114327268428132560}
+  sideParticles: {fileID: 0}
+  obsParticles: {fileID: 0}
+  ps: {fileID: 0}
+  s: {fileID: 0}
+  sf: 0
   state: 0

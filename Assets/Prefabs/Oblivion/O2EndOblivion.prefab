@@ -699,7 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac995fe486c7f44853b3aae3cd5e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quotes: []
+  quotes:
+  - Have Fun!
   quotesSpawn: 
   text: {fileID: 114206836923198368}
 --- !u!222 &222128489986580198
