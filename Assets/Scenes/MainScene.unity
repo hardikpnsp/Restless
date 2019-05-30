@@ -478,6 +478,9 @@ MonoBehaviour:
   - {fileID: 1288175958063340, guid: 4c13d1c01de139143b45603aedaf522b, type: 2}
   - {fileID: 1259777050198862, guid: a37aaa51430d30e459ff8381199d410e, type: 2}
   - {fileID: 1391563985342298, guid: e2db8170fee4cb042b93f8556774ccb0, type: 2}
+  - {fileID: 1821488223886390, guid: cdc4c81dd7a3e3e44816869b2e374eff, type: 2}
+  - {fileID: 1886045580345890, guid: 13a7b4f3a244c9e4cb7619fb9760af6c, type: 2}
+  - {fileID: 1550552740532340, guid: bca304add25f881438559a8855c304d2, type: 2}
   extraQuotes: 10
   cameraX: {fileID: 534669902}
   groundNumber: 0
@@ -11912,6 +11915,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    streamSet: 0
   - id: 0
     stream: 0
     name: Neostead_nature
@@ -11920,6 +11924,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+    streamSet: 0
   - id: 0
     stream: 0
     name: breathing
@@ -11928,6 +11933,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+    streamSet: 0
   - id: 0
     stream: 0
     name: fall
@@ -11936,6 +11942,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    streamSet: 0
 --- !u!4 &1665522699
 Transform:
   m_ObjectHideFlags: 0
