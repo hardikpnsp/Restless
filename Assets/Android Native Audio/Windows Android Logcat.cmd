@@ -1,5 +1,5 @@
 @echo off
 C:
-cd "\Program Files (x86)\Android\android-sdk\platform-tools"
+cd "C:\Users\hardi\AppData\Local\Android\sdk\platform-tools"
 adb.exe kill-server
 adb.exe logcat -s Unity

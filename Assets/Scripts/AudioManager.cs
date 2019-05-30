@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour {
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.streamSet = false;
             //Assets/Sounds/breathing.mp3
             //ana
 
@@ -47,7 +48,7 @@ public class AudioManager : MonoBehaviour {
         foreach(Sound s in sounds)
         {
             s.id = AndroidNativeAudio.load(s.name + ".mp3");
-            Debug.Log("file id = " + s.id);
+            //Debug.Log("file id = " + s.id);
         }
     }
     public void Play(string name, bool loop)
@@ -67,16 +68,11 @@ public class AudioManager : MonoBehaviour {
             Debug.LogWarning("Sound: " + name + "not found!");
             return;
         }
-        //s.id = AndroidNativeAudio.load(s.name + ".mp3");
-        if (s.id != 0 && s.stream != 0)
-        {
-            s.stream = AndroidNativeAudio.play(s.id);
-            Debug.Log("the stream : " + s.stream);
-        }
-        else
-        {
-            AndroidNativeAudio.resume(s.stream);
-        }
+
+        s.stream = AndroidNativeAudio.play(s.id);
+        //Debug.Log("the stream : " + s.stream);
+        s.streamSet = true;
+
         if (loop)
         {
             AndroidNativeAudio.setLoop(s.stream, -1);
@@ -105,8 +101,29 @@ public class AudioManager : MonoBehaviour {
         AndroidNativeAudio.pause(s.stream);
     }
 
-    private void OnDestroy()
+
+    public void Resume(string name, bool loop)
     {
-        AndroidNativeAudio.releasePool();
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + "not found!");
+            return;
+        }
+        //s.id = AndroidNativeAudio.load(s.name + ".mp3");
+        if (s.streamSet)
+        {
+            AndroidNativeAudio.resume(s.stream);
+        }
+        else
+        {
+            s.stream = AndroidNativeAudio.play(s.id);
+            Debug.Log("the stream : " + s.stream);
+            s.streamSet = true;
+        }
+        if (loop)
+        {
+            AndroidNativeAudio.setLoop(s.stream, -1);
+        }
     }
 }

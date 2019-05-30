@@ -33,7 +33,7 @@ public class playerCollision : MonoBehaviour {
     void Start()
     {
         sf = sideForce;
-        FindObjectOfType<AudioManager>().Play("breathing", true);
+        FindObjectOfType<AudioManager>().Resume("breathing", true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -98,7 +98,7 @@ public class playerCollision : MonoBehaviour {
         {
 
         }
-        Debug.Log("state: " + state);
+        //Debug.Log("state: " + state);
     }
 
     public void StateChange()
