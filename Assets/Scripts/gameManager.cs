@@ -455,11 +455,15 @@ public class gameManager : MonoBehaviour {
             else if(ps.powerState == (int)PowerState.PowerStates.EGO)
             {
                 CancelInvoke("goNormal");
+                goNormal();
+                Invoke("gotAnxiety", 1);
+                /*
                 ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
                 ps.StateChange();
                 pc.StateChange();
                 movement.StateChange();
                 Invoke("goNormal", 20);
+                */
             }
         }
     }

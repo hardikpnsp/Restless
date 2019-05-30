@@ -33,7 +33,7 @@ public class playerCollision : MonoBehaviour {
     void Start()
     {
         sf = sideForce;
-        FindObjectOfType<AudioManager>().Play("Breath");
+        FindObjectOfType<AudioManager>().Play("breathing", true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,14 +43,14 @@ public class playerCollision : MonoBehaviour {
             if (collision.collider.tag == "LeftSide")
             {
                 
-                FindObjectOfType<AudioManager>().Play("heartbeat");
+                FindObjectOfType<AudioManager>().Play("heartbeat", false);
                 sideParticles.transform.position = rb.transform.position;
                 sideParticles.Play();
                 state = (int)States.GOING_RIGHT;
             }
             else if (collision.collider.tag == "RightSide")
             {
-                FindObjectOfType<AudioManager>().Play("heartbeat");
+                FindObjectOfType<AudioManager>().Play("heartbeat", false);
                 sideParticles.transform.position = rb.transform.position;
                 sideParticles.Play();
                 state = (int)States.GOING_LEFT;
@@ -65,17 +65,17 @@ public class playerCollision : MonoBehaviour {
                 {
                     state = (int)States.DEAD;
                     movement.enabled = false;
-                    FindObjectOfType<AudioManager>().Play("Fall");
+                    FindObjectOfType<AudioManager>().Play("fall", false);
                     obsParticles.transform.position = rb.transform.position;
                     obsParticles.Play();
-                    FindObjectOfType<AudioManager>().Stop("Breath");
+                    FindObjectOfType<AudioManager>().Pause("breathing");
                     FindObjectOfType<gameManager>().EndGame();
                 }
                 else if(ps.powerState == (int)PowerState.PowerStates.EGO ||
                     ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
                 {
                     s.addBonusScore(1);
-                    FindObjectOfType<AudioManager>().Play("Fall");
+                    FindObjectOfType<AudioManager>().Play("fall", false);
                     obsParticles.transform.position = rb.transform.position;
                     obsParticles.Play();
                     Destroy(collision.collider);
