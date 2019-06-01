@@ -65,7 +65,7 @@ public class gameManager : MonoBehaviour {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         totalScore = PlayerPrefs.GetInt("TotalScore", 1);
-        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 4);
+        unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 5);
 
 
 
@@ -152,13 +152,52 @@ public class gameManager : MonoBehaviour {
             unlockedLevels = groundPrefabs.Length;
         }
         */
-        unlockedLevels = groundPrefabs.Length;
+        if (totalScore < 100)
+        {
+            unlockedLevels = 5;
+        }
+        else if (totalScore < 600)
+        {
+            unlockedLevels = 10;
+        }
+        else if(totalScore < 1500)
+        {
+            unlockedLevels = 15;
+        }else if(totalScore < 2500)
+        {
+            unlockedLevels = 20;
+        }
+        else if(totalScore < 3500)
+        {
+            unlockedLevels = 25;
+        }else if(totalScore < 5000)
+        {
+            unlockedLevels = 30;
+        }
+        {
+            unlockedLevels = groundPrefabs.Length;
+        }
+        if(unlockedLevels > groundPrefabs.Length)
+        {
+            unlockedLevels = groundPrefabs.Length;
+        }
+        //unlockedLevels = groundPrefabs.Length;
         //level unlock system end
+
+        if(unlockedLevels != PlayerPrefs.GetInt("unlockedLevels"))
+        {
+            startUI.GetComponentInChildren<SecretMessage>().SetText(
+                   "You have unlocked " +
+                   (unlockedLevels - PlayerPrefs.GetInt("unlockedLevels")) +
+                   " new levels, keep playing!");
+            PlayerPrefs.SetInt("unlockedLevels", unlockedLevels);
+        }
 
         Debug.Log("unlockedLevels : " + unlockedLevels);
 
         startUI.GetComponentInChildren<HighScore>().SetHighScore("highscore: " + highScore);
         startUI.GetComponentInChildren<TotalLemon>().SetTotalLemon("Lemons: " + totalLemons);
+        startUI.GetComponentInChildren<TotalScore>().SetTotalScore("TotalScore: " + totalScore);
 
         if (secret.GetSecret())
         {

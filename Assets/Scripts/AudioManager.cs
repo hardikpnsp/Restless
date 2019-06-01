@@ -38,6 +38,8 @@ public class AudioManager : MonoBehaviour {
         }
         Sound music = Array.Find(sounds, sound => sound.name == "Neostead_nature");
         music.source.Play();
+        Sound ambiance = Array.Find(sounds, sound => sound.name == "Outdoor_Ambiance");
+        ambiance.source.Play();
     }
 
 
@@ -69,14 +71,16 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
-        s.stream = AndroidNativeAudio.play(s.id);
-        //Debug.Log("the stream : " + s.stream);
-        s.streamSet = true;
-
         if (loop)
         {
-            AndroidNativeAudio.setLoop(s.stream, -1);
+            s.stream = AndroidNativeAudio.play(s.id, loop: -1);
         }
+        else
+        {
+            s.stream = AndroidNativeAudio.play(s.id);
+        }
+        AndroidNativeAudio.setVolume(s.stream, s.volume);
+        s.streamSet = true;
     }
 
     public void Stop(string name)
@@ -117,13 +121,18 @@ public class AudioManager : MonoBehaviour {
         }
         else
         {
-            s.stream = AndroidNativeAudio.play(s.id);
-            Debug.Log("the stream : " + s.stream);
-            s.streamSet = true;
+            if (loop)
+            {
+                s.stream = AndroidNativeAudio.play(s.id, loop: -1);
+                s.streamSet = true;
+            }
+            else
+            {
+                s.stream = AndroidNativeAudio.play(s.id);
+                Debug.Log("the stream : " + s.stream);
+                s.streamSet = true;
+            }
         }
-        if (loop)
-        {
-            AndroidNativeAudio.setLoop(s.stream, -1);
-        }
+        
     }
 }
