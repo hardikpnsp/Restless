@@ -62,6 +62,8 @@ public class gameManager : MonoBehaviour {
     private void Start()
     {
 
+        //FindObjectOfType<AdManager>().ShowSkipableAd();
+
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         totalScore = PlayerPrefs.GetInt("TotalScore", 1);
@@ -258,7 +260,9 @@ public class gameManager : MonoBehaviour {
             {
                 secret.SetSecretUnlocked(false);
             }
+
             Invoke("PlayEndAnimation", 2);
+            //FindObjectOfType<AdManager>().showAd = true;
         }
     }
 
@@ -461,6 +465,7 @@ public class gameManager : MonoBehaviour {
         if (ps.powerState == (int)PowerState.PowerStates.EGO)
         {
             ps.SetPowerState((int)PowerState.PowerStates.TRANSITIONEGO);
+            Debug.Log("ok");
         }else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
         {
             ps.SetPowerState((int)PowerState.PowerStates.TRANSITIONANX);
@@ -476,8 +481,7 @@ public class gameManager : MonoBehaviour {
         {
             if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
             ps.powerState == (int)PowerState.PowerStates.CALM ||
-            ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX ||
-            ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX)
             {
                 ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
                 ps.StateChange();
@@ -491,11 +495,13 @@ public class gameManager : MonoBehaviour {
                 CancelInvoke("goNormal");
                 Invoke("goNormal", 20);
             }
-            else if(ps.powerState == (int)PowerState.PowerStates.EGO)
+            else if(ps.powerState == (int)PowerState.PowerStates.EGO || 
+                ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
             {
                 CancelInvoke("goNormal");
                 goNormal();
-                Invoke("gotAnxiety", 1);
+                Invoke("gotAnxiety", 3);
+                Debug.Log("okok");
                 /*
                 ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
                 ps.StateChange();
@@ -504,6 +510,42 @@ public class gameManager : MonoBehaviour {
                 Invoke("goNormal", 20);
                 */
             }
+        }
+    }
+
+
+    public void gotAnxiety()
+    {
+        if (ps.powerState == (int)PowerState.PowerStates.NORMAL ||
+            ps.powerState == (int)PowerState.PowerStates.CALM ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX)
+        {
+            ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
+            ps.StateChange();
+            pc.StateChange();
+            movement.StateChange();
+            CancelInvoke("goNormal");
+            Invoke("goNormal", 20);
+        }
+        else if (ps.powerState == (int)PowerState.PowerStates.ANXIETY)
+        {
+            CancelInvoke("goNormal");
+            Invoke("goNormal", 20);
+        }
+        else if (ps.powerState == (int)PowerState.PowerStates.EGO ||
+            ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
+        {
+            CancelInvoke("goNormal");
+            goNormal();
+            Invoke("gotAnxiety", 1);
+            Debug.Log("okok");
+            /*
+            ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
+            ps.StateChange();
+            pc.StateChange();
+            movement.StateChange();
+            Invoke("goNormal", 20);
+            */
         }
     }
 

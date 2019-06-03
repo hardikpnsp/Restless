@@ -21,6 +21,7 @@ public class followPlayer : MonoBehaviour {
 
     public Vector3 rotationSpeed;
 
+    //implementation incomplete
     public enum CameraState
     {
         SIMPLE, 
@@ -142,12 +143,12 @@ public class followPlayer : MonoBehaviour {
             }
             if (calcOffset.z > anxietyOffset.z)
             {
-                calcOffset.z -= (3f) * Time.deltaTime;
+                calcOffset.z -= (4f) * Time.deltaTime;
 
             }
             else if (calcOffset.z < anxietyOffset.z)
             {
-                calcOffset.z += (3f) * Time.deltaTime;
+                calcOffset.z += (4f) * Time.deltaTime;
 
             }
 
@@ -159,12 +160,12 @@ public class followPlayer : MonoBehaviour {
             }
             if (calcOffset.x > anxietyOffset.x)
             {
-                calcOffset.x -= (3f) * Time.deltaTime;
+                calcOffset.x -= (10f) * Time.deltaTime;
 
             }
             else if (calcOffset.x < anxietyOffset.x)
             {
-                calcOffset.x += (3f) * Time.deltaTime;
+                calcOffset.x += (10f) * Time.deltaTime;
 
             }
 
@@ -200,7 +201,8 @@ public class followPlayer : MonoBehaviour {
             if (c.orthographicSize < normalSize)
             {
                 c.orthographicSize += (normalSize - anxietySize) * 0.4f * Time.deltaTime;
-            }else if(c.orthographicSize > normalSize)
+            }
+            else if(c.orthographicSize > normalSize)
             {
                 c.orthographicSize -= (normalSize - anxietySize) * 0.4f * Time.deltaTime;
             }
@@ -226,18 +228,17 @@ public class followPlayer : MonoBehaviour {
 
 
             //for z
-            if (calcOffset.z > offset.z - 0.2f && calcOffset.z < offset.z + 0.2f)
+            if (calcOffset.z > offset.z - 0.5f && calcOffset.z < offset.z + 0.5f)
             {
                 calcOffset.z = offset.z;
             }
             if (calcOffset.z > offset.z)
             {
-                calcOffset.z -= (3f) * Time.deltaTime;
-
-            }else if(calcOffset.z < offset.z)
+                calcOffset.z -= (2f) * Time.deltaTime;
+            }
+            else if(calcOffset.z < offset.z)
             {
-                calcOffset.z += (3f) * Time.deltaTime;
-
+                calcOffset.z += (2f) * Time.deltaTime;
             }
 
 
@@ -248,12 +249,12 @@ public class followPlayer : MonoBehaviour {
             }
             if (calcOffset.x > offset.x)
             {
-                calcOffset.x -= (3f) * Time.deltaTime;
+                calcOffset.x -= (10f) * Time.deltaTime;
 
             }
             else if (calcOffset.x < offset.x)
             {
-                calcOffset.x += (3f) * Time.deltaTime;
+                calcOffset.x += (10f) * Time.deltaTime;
 
             }
 
