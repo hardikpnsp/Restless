@@ -3,6 +3,7 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+[Ll]ogs/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
@@ -34,8 +35,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-<<<<<<< HEAD
-=======
 [Aa]pk/
 
 # ===========================
@@ -71,4 +70,3 @@ ehthumbs.db
 [Bb]uild
 sysinfo.txt
 *.stackdump
->>>>>>> 4c02dfe... gitignore improved
