@@ -38,11 +38,9 @@ public class playerCollision : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        //wDebug.Log(collision.collider.tag);
         if (state != (int)States.DEAD) { 
             if (collision.collider.tag == "LeftSide")
             {
-                
                 FindObjectOfType<AudioManager>().Play("heartbeat", false);
                 sideParticles.transform.position = rb.transform.position;
                 sideParticles.Play();
