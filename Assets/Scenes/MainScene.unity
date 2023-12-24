@@ -12616,45 +12616,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - id: 0
-    stream: 0
-    name: heartbeat
+  - name: heartbeat
     clip: {fileID: 8300000, guid: 7bd0713e54002964f939bdc68ad4b23d, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
     streamSet: 0
-  - id: 0
-    stream: 0
-    name: Neostead_nature
+  - name: Neostead_nature
     clip: {fileID: 8300000, guid: 58e3e18c03d091a4490afad52c753581, type: 3}
     volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
     streamSet: 0
-  - id: 0
-    stream: 0
-    name: breathing
+  - name: breathing
     clip: {fileID: 8300000, guid: 8c4e6cb4ebad960488562975f2a00512, type: 3}
     volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
     streamSet: 0
-  - id: 0
-    stream: 0
-    name: fall
+  - name: fall
     clip: {fileID: 8300000, guid: ba0c8b1e938b7b644aa4d354309a4737, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
     streamSet: 0
-  - id: 0
-    stream: 0
-    name: Outdoor_Ambiance
+  - name: Outdoor_Ambiance
     clip: {fileID: 8300000, guid: ac97d621da6f4d34fb7a3eb09f6d5b24, type: 3}
     volume: 0.5
     pitch: 1
