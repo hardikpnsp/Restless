@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class Sound {
 
+    [System.NonSerialized]
     public int id;
+    [System.NonSerialized]
     public int stream; 
 
     public string name;
