@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 
 public interface IAudioManager {
-    public void Start(Sound[] sounds);
+    public void InitialLoad(Sound[] sounds, Action _loadCompleteCallbacks);
     public void Pause(Sound sound);
     public void Play(Sound sound, bool loop);
     public void Stop(Sound sound);
@@ -12,6 +12,7 @@ public interface IAudioManager {
 
 public class AndroidAudioManager : IAudioManager
 {
+    private int soundLoadedCount = 0;
     public void Pause(Sound s)
     {
         AndroidNativeAudio.pause(s.stream);
@@ -51,13 +52,21 @@ public class AndroidAudioManager : IAudioManager
         }
     }
 
-    public void Start(Sound[] sounds)
+    public void InitialLoad(Sound[] sounds, Action _loadCompleteCallback)
     {
         AndroidNativeAudio.makePool();
 
         foreach(Sound s in sounds)
         {
-            s.id = AndroidNativeAudio.load(s.name + ".mp3");
+            s.id = AndroidNativeAudio.load(s.name + ".mp3", callback: (i) => {
+                soundLoadedCount++;
+                Debug.Log("Loading complete:" + i);
+
+                if (soundLoadedCount == sounds.Length) {
+                    Debug.Log("All sounds loaded");
+                    _loadCompleteCallback();
+                }
+            });
             Debug.Log("file id = " + s.id);
         }
     }
@@ -111,8 +120,10 @@ public class DefaultAudioManager : IAudioManager
         }
     }
 
-    public void Start(Sound[] sounds)
-    {}
+    public void InitialLoad(Sound[] sounds, Action _loadCompleteCallback)
+    {
+        _loadCompleteCallback();
+    }
 
     public void Stop(Sound s)
     {
@@ -160,9 +171,10 @@ public class AudioManager : MonoBehaviour {
 
     public void Start()
     {
-        am.Start(sounds);
-        instance.Play("Neostead_nature", loop: true);
-        instance.Play("Outdoor_Ambiance", loop: true);
+        am.InitialLoad(sounds, () => {
+            instance.Play("Neostead_nature", loop: true);
+            instance.Play("Outdoor_Ambiance", loop: true);
+        });
     }
     public void Play(string name, bool loop)
     {
