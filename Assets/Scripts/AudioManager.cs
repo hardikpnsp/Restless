@@ -22,13 +22,12 @@ public class AndroidAudioManager : IAudioManager
     {
         if (loop)
         {
-            s.stream = AndroidNativeAudio.play(s.id, loop: -1);
+            s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume, loop: -1);
         }
         else
         {
-            s.stream = AndroidNativeAudio.play(s.id);
+            s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume);
         }
-        AndroidNativeAudio.setVolume(s.stream, s.volume);
         s.streamSet = true;    
     }
 
@@ -42,11 +41,11 @@ public class AndroidAudioManager : IAudioManager
         {
             if (loop)
             {
-                s.stream = AndroidNativeAudio.play(s.id, loop: -1);
+                s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume, loop: -1);
             }
             else
             {
-                s.stream = AndroidNativeAudio.play(s.id);
+                s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume);
             }
             s.streamSet = true;
         }
@@ -174,6 +173,7 @@ public class AudioManager : MonoBehaviour {
         am.InitialLoad(sounds, () => {
             instance.Play("Neostead_nature", loop: true);
             instance.Play("Outdoor_Ambiance", loop: true);
+            instance.Play("breathing", loop: true);
         });
     }
     public void Play(string name, bool loop)
