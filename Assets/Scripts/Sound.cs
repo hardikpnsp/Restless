@@ -27,4 +27,6 @@ public class Sound {
     public AudioSource source;
 
     public bool streamSet = false;
+
+    public bool isMusic = false;
 }

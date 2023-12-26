@@ -12394,6 +12394,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     streamSet: 0
+    isMusic: 0
   - name: Neostead_nature
     clip: {fileID: 8300000, guid: 58e3e18c03d091a4490afad52c753581, type: 3}
     volume: 1
@@ -12401,13 +12402,15 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     streamSet: 0
+    isMusic: 1
   - name: breathing
     clip: {fileID: 8300000, guid: 8c4e6cb4ebad960488562975f2a00512, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 1
     loop: 1
     source: {fileID: 0}
     streamSet: 0
+    isMusic: 1
   - name: fall
     clip: {fileID: 8300000, guid: ba0c8b1e938b7b644aa4d354309a4737, type: 3}
     volume: 0.5
@@ -12415,6 +12418,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     streamSet: 0
+    isMusic: 0
   - name: Outdoor_Ambiance
     clip: {fileID: 8300000, guid: ac97d621da6f4d34fb7a3eb09f6d5b24, type: 3}
     volume: 0.5
@@ -12422,6 +12426,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     streamSet: 0
+    isMusic: 1
 --- !u!4 &1665522699
 Transform:
   m_ObjectHideFlags: 0

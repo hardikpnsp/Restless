@@ -15,30 +15,23 @@ public class AndroidAudioManager : IAudioManager
     private int soundLoadedCount = 0;
     public void Pause(Sound s)
     {
-        AndroidNativeAudio.pause(s.stream);
+        if (s.isMusic) {
+            ANAMusic.pause(s.id);
+        } else {
+            AndroidNativeAudio.pause(s.stream);
+        }
     }
 
     public void Play(Sound s, bool loop)
     {
-        if (loop)
-        {
-            s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume, loop: -1);
-        }
-        else
-        {
-            s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume);
-        }
-        s.streamSet = true;    
-    }
-
-    public void Resume(Sound s, bool loop)
-    {
-        if (s.streamSet)
-        {
-            AndroidNativeAudio.resume(s.stream);
-        }
-        else
-        {
+        if (s.isMusic) {
+            if (!ANAMusic.isPlaying(s.id))
+            {
+                ANAMusic.play(s.id);
+                ANAMusic.setLooping(s.id, loop);
+                ANAMusic.setVolume(s.id, s.volume);
+            }
+        } else {
             if (loop)
             {
                 s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume, loop: -1);
@@ -47,7 +40,35 @@ public class AndroidAudioManager : IAudioManager
             {
                 s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume);
             }
-            s.streamSet = true;
+            s.streamSet = true;    
+        }
+    }
+
+    public void Resume(Sound s, bool loop)
+    {
+        if (s.isMusic) {
+            if (!ANAMusic.isPlaying(s.id))
+            {
+                ANAMusic.play(s.id);
+                ANAMusic.setLooping(s.id, loop);
+            }
+        } else {
+            if (s.streamSet)
+            {
+                AndroidNativeAudio.resume(s.stream);
+            }
+            else
+            {
+                if (loop)
+                {
+                    s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume, loop: -1);
+                }
+                else
+                {
+                    s.stream = AndroidNativeAudio.play(s.id, leftVolume: s.volume);
+                }
+                s.streamSet = true;
+            }
         }
     }
 
@@ -57,22 +78,38 @@ public class AndroidAudioManager : IAudioManager
 
         foreach(Sound s in sounds)
         {
-            s.id = AndroidNativeAudio.load(s.name + ".mp3", callback: (i) => {
-                soundLoadedCount++;
-                Debug.Log("Loading complete:" + i);
+            if (s.isMusic) {
+                ANAMusic.load(s.name + ".mp3", loadedCallback: SoundLoadedCallback(s, sounds, _loadCompleteCallback));
+            } else {
+                AndroidNativeAudio.load(s.name + ".mp3", callback: SoundLoadedCallback(s, sounds, _loadCompleteCallback));
+            }
+        }
 
-                if (soundLoadedCount == sounds.Length) {
+        Action<int> SoundLoadedCallback(Sound s, Sound[] sounds, Action _loadCompleteCallback)
+        {
+            return (i) =>
+            {
+                Debug.Log("id for " + s.name + " = " + s.id);
+                soundLoadedCount++;
+                s.id = i;
+                Debug.Log("Sound loading complete:" + soundLoadedCount);
+
+                if (soundLoadedCount == sounds.Length)
+                {
                     Debug.Log("All sounds loaded");
                     _loadCompleteCallback();
                 }
-            });
-            Debug.Log("file id = " + s.id);
+            };
         }
     }
 
     public void Stop(Sound s)
     {
-        AndroidNativeAudio.unload(s.id);
+        if (s.isMusic) {
+            ANAMusic.release(s.id);
+        } else {
+            AndroidNativeAudio.unload(s.id);
+        }
     }
 }
 
