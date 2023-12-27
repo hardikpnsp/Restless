@@ -10855,7 +10855,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10879,13 +10879,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.49572244, y: 0.113038965, z: -0.06526308, w: 0.8586165}
-  m_LocalPosition: {x: 5, y: 50, z: -20}
+  m_LocalRotation: {x: 0.4980974, y: 0.07547912, z: -0.043577895, w: 0.8627299}
+  m_LocalPosition: {x: 0, y: 50, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60, y: 15, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 10, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10901,13 +10901,13 @@ MonoBehaviour:
   player: {fileID: 498132954}
   ps: {fileID: 1670315755}
   c: {fileID: 534669904}
-  offset: {x: -9, y: 59, z: -20}
-  anxietyOffset: {x: -9, y: 59, z: -25}
+  offset: {x: -5.5, y: 59, z: -25}
+  anxietyOffset: {x: -5.5, y: 59, z: -30}
   cameraDamp: 0.1
   calcOffset: {x: 0, y: 0, z: 0}
   anxietySize: 12
   normalSize: 18
-  rotationSet: {x: 60, y: 15, z: 0}
+  rotationSet: {x: 60, y: 10, z: 0}
   cameraRotate: {x: 0, y: 0, z: 0}
   rotationSpeed: {x: 0, y: 0, z: 0}
 --- !u!1001 &786062324
