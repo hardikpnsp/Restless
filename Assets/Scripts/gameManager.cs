@@ -552,14 +552,14 @@ public class gameManager : MonoBehaviour {
     public void OpenSecret()
     {
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
-        if (totalLemons >= 500)
+        if (totalLemons >= 100)
         {
             secret.SetSecretUnlocked(true);
             startUI.GetComponentInChildren<SecretMessage>().SetText("Play! you are in the end game now!");
         }
         else
         {
-            startUI.GetComponentInChildren<SecretMessage>().SetText("You need 500 lemons for that");
+            startUI.GetComponentInChildren<SecretMessage>().SetText("You need 100 lemons for that");
         }
     }
 }
