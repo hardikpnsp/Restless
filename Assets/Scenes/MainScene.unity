@@ -12435,16 +12435,8 @@ MonoBehaviour:
     source: {fileID: 0}
     streamSet: 0
     isMusic: 0
-  - name: anxiety-transition
+  - name: power-transition
     clip: {fileID: 8300000, guid: c701a7a34643f3d418de7f5a90c15883, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-    streamSet: 0
-    isMusic: 0
-  - name: ego-transition
-    clip: {fileID: 8300000, guid: 8a0f3c3fcc21a7b449cac04a7f6466fc, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
