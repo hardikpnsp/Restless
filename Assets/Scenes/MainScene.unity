@@ -12427,6 +12427,22 @@ MonoBehaviour:
     source: {fileID: 0}
     streamSet: 0
     isMusic: 1
+  - name: pickup
+    clip: {fileID: 8300000, guid: c007fb7d360c4fc41bb9af906c57a94e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    streamSet: 0
+    isMusic: 0
+  - name: power-transition
+    clip: {fileID: 8300000, guid: c701a7a34643f3d418de7f5a90c15883, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    streamSet: 0
+    isMusic: 0
 --- !u!4 &1665522699
 Transform:
   m_ObjectHideFlags: 0

@@ -11,3 +11,19 @@ Here is a link to a reddit post I made when I released the game on playstore:
 
 Here is a link to the playstore if you want to download the game:
 [Restless (google playstore)](https://play.google.com/store/apps/details?id=com.HardikPrajapati.Restless)
+
+# Credits
+
+## Sounds and Music
+
+Most of the sound effects and music were obtained from https://opengameart.org/
+
+- Background music - https://opengameart.org/content/breathing
+- Background music nature - https://opengameart.org/content/outdoor-ambiance
+- Sound effects
+  - pick up - https://opengameart.org/content/picked-coin-echo
+  - power up transition - https://opengameart.org/content/windy-sound-1
+
+## Unity Assest
+
+- Android Native Audio - https://assetstore.unity.com/packages/tools/audio/android-native-audio-35295

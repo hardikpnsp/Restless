@@ -8,6 +8,7 @@ public class LemonTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            FindObjectOfType<AudioManager>().Play("pickup", false);
             FindObjectOfType<gameManager>().gotLemon(other.transform, true);
         }
         else
