@@ -8,6 +8,7 @@ public class AnxietyTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            FindObjectOfType<AudioManager>().Play("pickup", false);
             FindObjectOfType<gameManager>().gotAnxiety(other.transform, true);
         }
         else

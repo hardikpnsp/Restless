@@ -8,6 +8,7 @@ public class EgoTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            FindObjectOfType<AudioManager>().Play("pickup", false);
             FindObjectOfType<gameManager>().gotEgo(other.transform, true);
         }
         else
