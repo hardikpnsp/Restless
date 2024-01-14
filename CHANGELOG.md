@@ -1,3 +1,10 @@
+## Release v1.1.1
+
+### Gameplay changes
+
+- fix: added missing sound effects for pickups and power-up transitions
+- added better icons for the game
+
 ## Release v1.1.0
 
 ### Gameplay changes
