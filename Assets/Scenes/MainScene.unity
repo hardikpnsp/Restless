@@ -12387,17 +12387,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: heartbeat
-    clip: {fileID: 8300000, guid: 7bd0713e54002964f939bdc68ad4b23d, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-    streamSet: 0
-    isMusic: 0
   - name: Neostead_nature
     clip: {fileID: 8300000, guid: 58e3e18c03d091a4490afad52c753581, type: 3}
     volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    streamSet: 0
+    isMusic: 1
+  - name: Outdoor_Ambiance
+    clip: {fileID: 8300000, guid: ac97d621da6f4d34fb7a3eb09f6d5b24, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -12419,14 +12419,14 @@ MonoBehaviour:
     source: {fileID: 0}
     streamSet: 0
     isMusic: 0
-  - name: Outdoor_Ambiance
-    clip: {fileID: 8300000, guid: ac97d621da6f4d34fb7a3eb09f6d5b24, type: 3}
+  - name: heartbeat
+    clip: {fileID: 8300000, guid: 7bd0713e54002964f939bdc68ad4b23d, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
     streamSet: 0
-    isMusic: 1
+    isMusic: 0
   - name: pickup
     clip: {fileID: 8300000, guid: c007fb7d360c4fc41bb9af906c57a94e, type: 3}
     volume: 0.5
@@ -12435,7 +12435,7 @@ MonoBehaviour:
     source: {fileID: 0}
     streamSet: 0
     isMusic: 0
-  - name: power-transition
+  - name: power_transition
     clip: {fileID: 8300000, guid: c701a7a34643f3d418de7f5a90c15883, type: 3}
     volume: 0.5
     pitch: 1

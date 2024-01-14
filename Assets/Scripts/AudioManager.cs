@@ -79,20 +79,18 @@ public class AndroidAudioManager : IAudioManager
         foreach(Sound s in sounds)
         {
             if (s.isMusic) {
-                ANAMusic.load(s.name + ".mp3", loadedCallback: SoundLoadedCallback(s, sounds, _loadCompleteCallback));
+                s.id = ANAMusic.load(s.name + ".mp3", loadedCallback: SoundLoadedCallback(sounds, _loadCompleteCallback));
             } else {
-                AndroidNativeAudio.load(s.name + ".mp3", callback: SoundLoadedCallback(s, sounds, _loadCompleteCallback));
+                s.id = AndroidNativeAudio.load(s.name + ".mp3", callback: SoundLoadedCallback(sounds, _loadCompleteCallback));
             }
+            Debug.Log("ID for sound " + s.name + ": " + s.id);
         }
 
-        Action<int> SoundLoadedCallback(Sound s, Sound[] sounds, Action _loadCompleteCallback)
+        Action<int> SoundLoadedCallback(Sound[] sounds, Action _loadCompleteCallback)
         {
             return (i) =>
             {
-                Debug.Log("id for " + s.name + " = " + s.id);
                 soundLoadedCount++;
-                s.id = i;
-                Debug.Log("Sound loading complete:" + soundLoadedCount);
 
                 if (soundLoadedCount == sounds.Length)
                 {

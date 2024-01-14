@@ -435,7 +435,7 @@ public class gameManager : MonoBehaviour {
             ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX ||
             ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
             {
-                FindObjectOfType<AudioManager>().Play("power-transition", false);
+                FindObjectOfType<AudioManager>().Play("power_transition", false);
                 ps.SetPowerState((int)PowerState.PowerStates.EGO);
                 ps.StateChange();
                 pc.StateChange();
@@ -450,7 +450,7 @@ public class gameManager : MonoBehaviour {
             } 
             else if(ps.powerState == (int)PowerState.PowerStates.ANXIETY)
             {
-                FindObjectOfType<AudioManager>().Play("power-transition", false);
+                FindObjectOfType<AudioManager>().Play("power_transition", false);
                 CancelInvoke("goNormal");
                 ps.SetPowerState((int)PowerState.PowerStates.EGO);
                 ps.StateChange();
@@ -485,7 +485,7 @@ public class gameManager : MonoBehaviour {
             ps.powerState == (int)PowerState.PowerStates.CALM ||
             ps.powerState == (int)PowerState.PowerStates.TRANSITIONANX)
             {
-                FindObjectOfType<AudioManager>().Play("power-transition", false);
+                FindObjectOfType<AudioManager>().Play("power_transition", false);
                 ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
                 ps.StateChange();
                 pc.StateChange();
@@ -501,7 +501,7 @@ public class gameManager : MonoBehaviour {
             else if(ps.powerState == (int)PowerState.PowerStates.EGO || 
                 ps.powerState == (int)PowerState.PowerStates.TRANSITIONEGO)
             {
-                FindObjectOfType<AudioManager>().Play("power-transition", false);
+                FindObjectOfType<AudioManager>().Play("power_transition", false);
                 CancelInvoke("goNormal");
                 goNormal();
                 Invoke("gotAnxiety", 3);
