@@ -9,7 +9,6 @@ public class score : MonoBehaviour {
     public int bonusScore;
     public int totalScore;
     public bool setScoreCalled = false;
-	// Update is called once per frame
 	void Update () {
         if (!setScoreCalled)
         {

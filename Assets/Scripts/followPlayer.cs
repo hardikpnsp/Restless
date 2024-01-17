@@ -21,7 +21,6 @@ public class followPlayer : MonoBehaviour {
 
     public Vector3 rotationSpeed;
 
-    //implementation incomplete
     public enum CameraState
     {
         SIMPLE, 
@@ -110,14 +109,6 @@ public class followPlayer : MonoBehaviour {
                 c.orthographicSize -= (normalSize - anxietySize) * 0.4f * Time.deltaTime;
             }
 
-
-            //handle anxiety offset
-            /*
-            if (calcOffset.z > anxietyOffset.z)
-            {
-                calcOffset = calcOffset + new Vector3(0, 0, (-1) * (3f) * Time.deltaTime);
-            }
-            */
 
             //for y
             if (calcOffset.y > anxietyOffset.y - 0.2f && calcOffset.y < anxietyOffset.y + 0.2f)

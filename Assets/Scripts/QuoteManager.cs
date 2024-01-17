@@ -23,7 +23,6 @@ public class QuoteManager : MonoBehaviour
         {
             instance = this;
             oblivionCounter = 0;
-            //Debug.Log("instance created");
         }
         else
         {
@@ -43,7 +42,6 @@ public class QuoteManager : MonoBehaviour
     {
         if (!quoteSet)
         {
-            //Debug.Log("quoteSet called");
             quoteSpawn = new int[groundPrefablength, offset];
             int i = 0;
             int j = 0;
@@ -64,8 +62,6 @@ public class QuoteManager : MonoBehaviour
 
     public void SetQuoteWithProbability(GameObject ground, int r)
     {
-        // Debug.Log("quoteSetwithprobability called");
-
         if (Random.Range(0, 9) > 5 || counter >= 10)
         {
             int len = ground.GetComponentInChildren<SetText>().getTotal();
@@ -85,7 +81,6 @@ public class QuoteManager : MonoBehaviour
                     break;
                 }
             }
-            //Debug.Log("requesting quote with : " + quoteNumber + " " + r + " and quoteSpawn : " + quoteSpawn[r, quoteNumber]);
             if (quoteSpawn[r, quoteNumber] != 0)
             {
                 ground.GetComponentInChildren<SetText>().setText(quoteNumber);

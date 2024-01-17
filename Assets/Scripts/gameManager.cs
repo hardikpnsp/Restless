@@ -61,99 +61,11 @@ public class gameManager : MonoBehaviour {
     public int unlockedLevels = 0;
     private void Start()
     {
-
-        //FindObjectOfType<AdManager>().ShowSkipableAd();
-
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         totalLemons = PlayerPrefs.GetInt("Lemons", 0);
         totalScore = PlayerPrefs.GetInt("TotalScore", 1);
         unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 5);
 
-
-
-        /*
-        int d = 50;
-        
-        if(totalScore <= 100)
-        {
-            d = 50;
-        }else if(totalScore < 500)
-        {
-            d = 100;
-        }else if(totalScore < 1000)
-        {
-            d = 160;
-        }
-        else if(totalScore < 2500)
-        {
-            d = 250;
-        }
-        else
-        {
-            d = 300;
-        }
-
-        int calcUnlockedLevels = (int) totalScore/d + 4;
-        if (unlockedLevels != calcUnlockedLevels && unlockedLevels != groundPrefabs.Length)
-        {
-            if(calcUnlockedLevels > groundPrefabs.Length && unlockedLevels < groundPrefabs.Length && calcUnlockedLevels > unlockedLevels)
-            {
-                startUI.GetComponentInChildren<SecretMessage>().SetText(
-                    "You have unlocked " +
-                    (groundPrefabs.Length - unlockedLevels) +
-                    " new levels, keep playing!");
-                unlockedLevels = groundPrefabs.Length;
-                PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
-            }
-            else if(calcUnlockedLevels > unlockedLevels)
-            {
-                startUI.GetComponentInChildren<SecretMessage>().SetText(
-                    "You have unlocked " +
-                    (calcUnlockedLevels - unlockedLevels) +
-                    " new levels, keep playing!");
-                unlockedLevels = calcUnlockedLevels;
-                PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
-            }
-        }
-        */
-
-        //level unlcok system begins
-        /*
-        if (totalScore > 2000 && unlockedLevels < 20)
-        {
-            startUI.GetComponentInChildren<SecretMessage>().SetText(
-                   "You have unlocked " +
-                   (20 - unlockedLevels) +
-                   " new levels, keep playing!");
-            unlockedLevels = 20;
-            PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
-        }else if (totalScore > 1000 && unlockedLevels < 15)
-        {
-            startUI.GetComponentInChildren<SecretMessage>().SetText(
-                    "You have unlocked " +
-                    (15 - unlockedLevels) +
-                    " new levels, keep playing!");
-            unlockedLevels = 15;
-            PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
-        }else if(totalScore > 500 && unlockedLevels < 10)
-        {
-            startUI.GetComponentInChildren<SecretMessage>().SetText(
-                   "You have unlocked " +
-                   (10 - unlockedLevels) +
-                   " new levels, keep playing!");
-            unlockedLevels = 10;
-            PlayerPrefs.SetInt("UnlockedLevels", unlockedLevels);
-        }
-        else
-        {
-            unlockedLevels = 6;
-        }
-
-        if(unlockedLevels > groundPrefabs.Length)
-        {
-            unlockedLevels = groundPrefabs.Length;
-        }
-        */
         if (totalScore < 100)
         {
             unlockedLevels = 5;
@@ -183,8 +95,6 @@ public class gameManager : MonoBehaviour {
         {
             unlockedLevels = groundPrefabs.Length;
         }
-        //unlockedLevels = groundPrefabs.Length;
-        //level unlock system end
 
         if(unlockedLevels != PlayerPrefs.GetInt("unlockedLevels"))
         {
@@ -222,28 +132,8 @@ public class gameManager : MonoBehaviour {
 
         qm.SetUpQuoteManager(groundPrefabs.Length, extraQuotes);
 
-        //QuoteManager in- groundPrefabs.Length, extraQuotes
-        /*
-        quoteSpawn = new int[groundPrefabs.Length,extraQuotes];
-        int i = 0;
-        int j = 0;
-        for(i=0; i<groundPrefabs.Length; i++)
-        {
-            for(j=0; j<extraQuotes; j++)
-            {
-                quoteSpawn[i,j] = 1;
-            }
-        }
-        */
         movement.enabled = false;
 
-        
-
-        //QuoteManager in- current type: gameObject
-
-        //comment this 
-        //current.GetComponentInChildren<SetText>().setText(Random.Range(0, 8));
-        //comment this end
         groundNumber = 0;
 
     }
@@ -254,7 +144,6 @@ public class gameManager : MonoBehaviour {
         {
 
             gameHasEnded = true;
-            //Debug.Log("Game Over");
             cameraX.GetComponent<followPlayer>().enabled = false;
             if (GoToOblivion)
             {
@@ -262,7 +151,6 @@ public class gameManager : MonoBehaviour {
             }
 
             Invoke("PlayEndAnimation", 2);
-            //FindObjectOfType<AdManager>().showAd = true;
         }
     }
 
@@ -316,32 +204,27 @@ public class gameManager : MonoBehaviour {
                 if (z < 0)
                 {
                     z = 1;
-                    //Debug.Log("r: " + r);
-                    //Debug.Log("z: " + z);
                     buffer2 = Instantiate(OblivionPrefabs[0], new Vector3(0, 0, z * 100), Quaternion.identity);
                     oblivionCount++;
-                    //QuoteManager
+
                     qm.SetOblivionQuotes(buffer2);
                 }
                 else
                 {
                     z = (int)(z / 100);
                     z = z + 2;
-                    //Debug.Log("r: " + r);
-                    //Debug.Log("z: " + z);
                     buffer0 = current;
                     current = buffer2;
                     buffer2 = Instantiate(OblivionPrefabs[0], new Vector3(0, 0, z * 100), Quaternion.identity);
                     oblivionCount++;
-                    //QuoteManager
+
                     qm.SetOblivionQuotes(buffer2);
 
                     Destroy(buffer0);
 
                 }
-                //current.GetComponent<GroundTrigger>().enabled = false;
+
                 groundNumber++;
-                //Debug.Log("Ground: " + groundNumber);
             }
             else
             {
@@ -351,7 +234,6 @@ public class gameManager : MonoBehaviour {
                 current = buffer2;
                 buffer2 = Instantiate(OblivionPrefabs[1], new Vector3(0, 0, z * 100), Quaternion.identity);
                 oblivionCount++;
-                //QuoteManager
                 Destroy(buffer0);
             }
         }
@@ -361,51 +243,25 @@ public class gameManager : MonoBehaviour {
             {
                 z = 1;
                 int r = Random.Range(0, unlockedLevels);
-                //Debug.Log("r: " + r);
-                //Debug.Log("z: " + z);
                 buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
 
-                //QuoteManager
                 qm.SetQuoteWithProbability(buffer2, r);
-                /*
-                int quoteNumber = Random.Range(0, extraQuotes);
-
-                while (quoteSpawn[r, quoteNumber] != 1)
-                {
-                    quoteNumber = Random.Range(0, extraQuotes);
-                }
-                quoteSpawn[r, quoteNumber] = 0;
-                buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
-                */
             }
             else
             {
                 z = (int)(z / 100);
                 z = z + 2;
                 int r = Random.Range(1, unlockedLevels);
-                //Debug.Log("r: " + r);
-                //Debug.Log("z: " + z);
                 buffer0 = current;
                 current = buffer2;
                 buffer2 = Instantiate(groundPrefabs[r], new Vector3(0, 0, z * 100), Quaternion.identity);
-                //QuoteManager
-                qm.SetQuoteWithProbability(buffer2, r);
-                /*
-                int quoteNumber = Random.Range(0, extraQuotes);
 
-                while(quoteSpawn[r,quoteNumber] != 1)
-                {
-                    quoteNumber = Random.Range(0, extraQuotes);
-                }
-                quoteSpawn[r, quoteNumber] = 0;
-                buffer2.GetComponentInChildren<SetText>().setText(quoteNumber);
-                */
+                qm.SetQuoteWithProbability(buffer2, r);
+
                 Destroy(buffer0);
 
             }
-            //current.GetComponent<GroundTrigger>().enabled = false;
             groundNumber++;
-            //Debug.Log("Ground: " + groundNumber);
         }
     }
 
@@ -535,13 +391,6 @@ public class gameManager : MonoBehaviour {
             goNormal();
             Invoke("gotAnxiety", 1);
             Debug.Log("okok");
-            /*
-            ps.SetPowerState((int)PowerState.PowerStates.ANXIETY);
-            ps.StateChange();
-            pc.StateChange();
-            movement.StateChange();
-            Invoke("goNormal", 20);
-            */
         }
     }
 

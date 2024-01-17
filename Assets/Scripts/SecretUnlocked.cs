@@ -11,7 +11,6 @@ public class SecretUnlocked : MonoBehaviour {
         if (instance == null)
         {
             instance = this;
-            //Debug.Log("instance created");
         }
         else
         {

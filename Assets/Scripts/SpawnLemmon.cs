@@ -7,9 +7,7 @@ using UnityEngine;
 public class SpawnLemmon : MonoBehaviour {
 
     public GameObject ego;
-    //ego
     public GameObject anxiety;
-    //anxiety
     public int egoOrAnxiety; 
     //1 = ego only, 2 = anxiety only, 0 = random
     public int chance = 7; 
@@ -35,19 +33,16 @@ public class SpawnLemmon : MonoBehaviour {
         {
             int r1 = Random.Range(0, 10);
             int r2 = Random.Range(0, 10);
-            //Debug.Log("spawning lemon "+ r1 + " : " + r2);
 
             if (r2 > chance)
             {
                 if (r1 >= 5)
                 {
                     Instantiate(ego, gameObject.transform);
-                    //Debug.Log("created ego");
                 }
                 else
                 {
                     Instantiate(anxiety, gameObject.transform);
-                    //Debug.Log("created anxiety");
                 }
             }
         }
