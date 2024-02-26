@@ -59,6 +59,12 @@ public class gameManager : MonoBehaviour {
     public int totalScore;
 
     public int unlockedLevels = 0;
+
+    void Awake() 
+    {
+        Application.targetFrameRate = 60;
+    }
+
     private void Start()
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
